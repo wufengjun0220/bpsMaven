@@ -1,0 +1,273 @@
+package com.mingtech.application.autotask.taskService;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.log4j.Logger;
+
+import com.mingtech.application.autotask.core.AbstractAutoTask;
+import com.mingtech.application.autotask.core.domain.BooleanAutoTaskResult;
+import com.mingtech.application.pool.bank.bbsp.service.PoolEcdsService;
+import com.mingtech.application.pool.bank.coresys.domain.ECDSPoolTransNotes;
+import com.mingtech.application.pool.bank.hkb.ReturnMessageNew;
+import com.mingtech.application.pool.common.PoolComm;
+import com.mingtech.application.pool.common.domain.PedProtocolDto;
+import com.mingtech.application.pool.common.domain.PedProtocolList;
+import com.mingtech.application.pool.common.domain.ProListQueryBean;
+import com.mingtech.application.pool.common.domain.ProtocolQueryBean;
+import com.mingtech.application.pool.common.service.BlackListManageService;
+import com.mingtech.application.pool.common.service.PedProtocolService;
+import com.mingtech.application.pool.common.service.PoolCommonServiceFactory;
+import com.mingtech.application.pool.draft.domain.DraftPoolBase;
+import com.mingtech.application.pool.vtrust.domain.PoolVtrust;
+import com.mingtech.application.pool.vtrust.service.PoolVtrustService;
+import com.mingtech.framework.common.util.DateUtils;
+import com.mingtech.framework.common.util.StringUtil;
+
+/**
+ * 
+ * @Title: 虚拟票据池自动入池
+ * @Description: 查询票据系统进行虚拟票据池自动入池任务
+ * @author Ju Nana
+ * @date 2018-11-8
+ */
+public class AutoVtrustNO1Task  extends AbstractAutoTask {
+	BlackListManageService blackListManageService  = PoolCommonServiceFactory.getBlackListManageService();
+	
+	private static final Logger logger = Logger.getLogger(AutoVtrustNO1Task.class);
+	
+	/**
+	 * （1）删除票据池中来源为BBSP系统的已签约虚拟票据池的签约信息
+	 * （2）查询出已签约虚拟票据池的客户号
+	 * （3）用本客户名下已签约的账号调用票据系统客户持有票据查询接口
+	 * （4）将返回数据存入pl_vtrust表
+	 */
+	public BooleanAutoTaskResult run() throws Exception {
+		
+		logger.info("虚拟票据池票自动任务开始......");
+		
+		PoolEcdsService poolEcdsService = PoolCommonServiceFactory.getPoolEcdsService();
+		PedProtocolService pedProtocolService =  PoolCommonServiceFactory.getPedProtocolService();
+		PoolVtrustService poolVtrustService = PoolCommonServiceFactory.getPoolVtrustService();
+		poolVtrustService.deleteVtrustInfoBySource(PoolComm.SOUR_BBSP);
+		/*
+		 * 基础签约已签约，融资未签约的
+		 */
+		ProtocolQueryBean queryBean = new ProtocolQueryBean();
+		queryBean.setOpenFlag(PoolComm.OPEN_00);
+		queryBean.setvStatus(PoolComm.VS_01);
+		queryBean.setIsGroup(PoolComm.NO);
+		/*
+		 * 单户票据池
+		 */
+		List<PedProtocolDto> custList =  pedProtocolService.queryProtocolDtoListByQueryBean(queryBean);
+		
+		queryBean.setIsGroup(PoolComm.YES);
+		/*
+		 * 集团票据池
+		 */
+		List<PedProtocolDto> custListGroup =pedProtocolService.queryProtocolDtoListByQueryBean(queryBean);
+						
+		String accStr = null;//拼接电票签约账号
+		Map accMap = new HashMap();//用于存放电票签约账号和协议的对应关系
+		
+		/*
+		 * 单户电票签约账户集成
+		 */
+		if(custList != null && custList.size() > 0 ){
+			PedProtocolDto dto = null;
+			for(int i =0 ;i<custList.size();i++){
+				dto = (PedProtocolDto)custList.get(i);
+				String accNo = dto.getElecDraftAccount();//电票签约账号
+				if(StringUtil.isNotBlank(accNo)){
+					accStr = accStr + "|" + accNo;
+				}
+				if(accNo != null && !"".equals(accNo)){
+					String[] arr = accNo.split("\\|");//按|分割多个签约账号的情况,为了每个账号对应协议
+					for (int j = 0; j < arr.length; j++) {
+						ProtocolQueryBean bean = new ProtocolQueryBean();
+						bean.setCustnumber(dto.getCustnumber());
+						bean.setCustname(dto.getCustname());
+						accMap.put(arr[j], bean);
+					}
+				}
+			}
+		}
+		
+		/*
+		 * 集团的电票签约账户集成
+		 */
+		if(custListGroup != null && custListGroup.size() > 0 ){
+			for(int i =0 ;i<custListGroup.size();i++){
+				PedProtocolDto dto = (PedProtocolDto)custListGroup.get(i);
+				ProListQueryBean bean = new ProListQueryBean();
+				bean.setBpsNo(dto.getPoolAgreement());
+				List<String> custIdentityList = new ArrayList<String>();
+				custIdentityList.add(PoolComm.KHLX_01);
+				custIdentityList.add(PoolComm.KHLX_03);
+				bean.setCustIdentityList(custIdentityList);
+				List<PedProtocolList> mems = pedProtocolService.queryProListByQueryBean(bean);
+				if(mems!=null && mems.size()>0){
+					for(int j=0;j<mems.size();j++){
+						PedProtocolList mem = mems.get(j);
+						String accNo = mem.getElecDraftAccount();//电票签约账号
+						if(StringUtil.isNotBlank(accNo)){
+							accStr = accStr + "|" + accNo;
+						}
+						if(accNo != null && !"".equals(accNo)){
+							String[] arr = accNo.split("\\|");//按|分割多个签约账号的情况,为了每个账号对应协议
+							for (int k = 0; k < arr.length; k++) {
+								ProtocolQueryBean bean1 = new ProtocolQueryBean();
+								bean1.setCustnumber(mem.getCustNo());
+								bean1.setCustname(mem.getCustName());
+								accMap.put(arr[k], bean1);
+							}
+						}
+						
+						
+					}
+				}
+				
+			}
+
+		}
+		/*
+		 * 电票签约账号去重复数据
+		 */
+		String AccNos = null;
+		if(accStr!=null){
+			String[] eleAccArr = accStr.split("\\|");
+			List<String> eleAccList = new ArrayList<String>();
+			for(String accNo : eleAccArr){
+				eleAccList.add(accNo);
+			}
+			for(int i=0;i<eleAccList.size()-1;i++){
+				for(int j=eleAccList.size()-1;j>i;j--){
+					if(eleAccList.get(i).equals(eleAccList.get(j))){
+						eleAccList.remove(eleAccList.get(j));
+					}
+				}
+			}
+			for(String accNo : eleAccList){
+				if(AccNos == null){
+					AccNos = accNo;
+				}else{					
+					AccNos = AccNos+"|"+accNo;
+				}
+			}
+		}   
+		
+		
+		/*
+		 * 嗲用BBSP系统查回持有票据
+		 */
+		if(AccNos != null){
+			
+			logger.info("客户号与电票账号的对应关系为["+accMap+"]");
+			AccNos = AccNos.substring(1, AccNos.length());
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(new Date());//设置起时间		    
+		    cal.add(Calendar.DATE, 1);//加一天
+		    Date dueDt = cal.getTime();//到期日当天的票据不查
+		    //调用持有票据查询接口
+			ECDSPoolTransNotes transNotes = new ECDSPoolTransNotes();
+			transNotes.setApplicantAcctNo(AccNos);
+			transNotes.setMinDueDt(DateUtils.toString(dueDt, "yyyyMMdd"));
+			logger.info("根据电票签约账号查询持有票据开始");
+			ReturnMessageNew response = poolEcdsService.txApplyPossessBill(transNotes);
+			
+			List list = response.getDetails();
+			if(list!=null && list.size()>0){
+				logger.info("根据电票签约账号查询持有票据结束,持有票据笔数:"+list.size());
+				
+				ProtocolQueryBean bean2 = null ;
+				for (int i = 0; i < list.size(); i++) {
+					//根据电票签约账号先与协议先对应
+					Map map =(Map) list.get(i);
+					logger.info("虚拟票据池赋值开始");
+					PoolVtrust vtrust =dataProcess(map);
+					logger.info("虚拟票据池赋值结束");
+					bean2 = (ProtocolQueryBean) accMap.get(getStringVal(map.get("accNo")));//根据电票签约账号获取协议信息，将客户信息存入票中
+					
+					vtrust = this.vtrustToPool(vtrust);
+					vtrust.setVtEntpNo(bean2.getCustnumber());//核心客户号
+					vtrust.setVtEntpName(bean2.getCustname());//客户名称
+					poolVtrustService.txStore(vtrust);
+				}
+			}
+		}
+		
+		logger.info("虚拟票据池票自动任务结束......");
+		
+		return new BooleanAutoTaskResult(true);
+	}
+	private  PoolVtrust dataProcess(Map map) throws ParseException{
+		PoolVtrust vtrust = new PoolVtrust();
+		DateFormat format =new SimpleDateFormat("yyyyMMdd");
+		try {
+			vtrust.setVtNb(getStringVal(map.get("billNo")));
+			if("1".equals(getStringVal(map.get("billType")))){//票据类型-银票
+				vtrust.setVtType(PoolComm.BILL_TYPE_BANK);
+			}else if("2".equals(getStringVal(map.get("billType")))){//票据类型-商票
+				vtrust.setVtType(PoolComm.BILL_TYPE_BUSI);	
+			}
+			String acptDt = getStringVal(map.get("acptDt"));
+			vtrust.setVtisseDt(format.parse(acptDt));
+			String dueDt = getStringVal(map.get("dueDt"));
+			vtrust.setVtdueDt(format.parse(dueDt));
+			vtrust.setVtdrwrName(getStringVal(map.get("remitter")));
+			vtrust.setVtdrwrAccount(getStringVal(map.get("remitterAcctNo")));
+			vtrust.setVtdrwrBankNumber(getStringVal(map.get("remitterBankNo")));
+			vtrust.setVtdrwrBankName(getStringVal(map.get("remitterBankName")));
+			vtrust.setVtpyeeName(getStringVal(map.get("payee")));
+			vtrust.setVtpyeeAccount(getStringVal(map.get("payeeAcctNo")));
+			vtrust.setVtpyeeBankAccount(getStringVal(map.get("payeeBankName")));
+			vtrust.setVtpyeeBankName(getStringVal(map.get("payeeBankNo")));
+			vtrust.setVtaccptrAccount(getStringVal(map.get("acceptorAcctNo")));
+			vtrust.setVtaccptrBankAccount(getStringVal(map.get("acceptorBankNo")));
+			vtrust.setVtaccptrBankName(getStringVal(map.get("acceptorBankName")));
+			vtrust.setVtaccptrName(getStringVal(map.get("acceptor")));
+			vtrust.setVtisseAmt(getBigDecimalVal(map.get("billMoney")));
+			vtrust.setVtTranSfer(getStringVal(map.get("forbidFlag")));//不得转让标记
+			vtrust.setVtDraftMedia(PoolComm.BILL_MEDIA_ELECTRONICAL);
+			vtrust.setPayType(PoolComm.QY_01);
+			vtrust.setVtStatus(PoolComm.DS_00);
+			vtrust.setVtSource(PoolComm.SOUR_BBSP);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return vtrust;
+		
+	}
+	
+	private PoolVtrust vtrustToPool(PoolVtrust vtrust) throws Exception{
+		DraftPoolBase pool = new DraftPoolBase();
+		pool.setPlDrwrNm(vtrust.getVtdrwrName());//出票人
+		pool.setPlAccptrNm(vtrust.getVtaccptrName());//承兑人
+		pool.setPlAccptrSvcr(vtrust.getVtaccptrBankAccount());//承兑行
+		//承兑行所在地区
+		pool.setPlDraftNb(vtrust.getVtNb());//票号
+		pool.setPlDraftMedia(vtrust.getVtDraftMedia());//票据介质
+		pool.setForbidFlag(vtrust.getVtTranSfer());//禁止背书标识
+		return vtrust;
+	}
+
+	
+	public BooleanAutoTaskResult rollBack() throws Exception {
+		return null;
+	}
+
+
+
+
+
+	
+}

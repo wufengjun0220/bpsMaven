@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 默认装配方式 byName -->
+<beans default-autowire="byName" default-lazy-init="false" 
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath*:config/project.properties</value>
+				<value>classpath*:config/redis.properties</value>
+			</list>
+		</property>
+	</bean>
+	
+	<context:component-scan base-package="com.mingtech.application">
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+	
+	<!-- 数据库连接方式1数据源使用方式 
+	<bean id="ecdsDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"
+		dependency-check="none">
+		<property name="driverClassName" value="${datasource.driverClassName}" />
+		<property name="url" value="${datasource.url}" />
+		<property name="username" value="${datasource.username}" />
+		<property name="password" value="${datasource.password}" />
+		<property name="maxActive" value="${datasource.maxActive}" />
+		<property name="maxIdle" value="${datasource.maxIdle}" />
+		<property name="maxWait" value="${datasource.maxWait}" />
+		<property name="defaultAutoCommit" value="${datasource.defaultAutoCommit}" />
+		<property name="removeAbandoned" value="${datasource.removeAbandoned}" />
+		<property name="removeAbandonedTimeout" value="${datasource.removeAbandonedTimeout}" />
+	</bean>
+	-->
+
+	<!-- 数据库连接方式2JNDI方式 
+		<bean id="ecdsDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+        	<property name="jndiName">
+            	<value>jdbc/bps</value>
+ 		 	</property>
+  	    </bean>
+-->
+	<!-- 数据库连接方式3 德鲁伊连库 -->
+
+	   <bean id="ecdsDataSource" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close">
+			<property name="driverClassName" value="${datasource.driverClassName}" />
+			<property name="url" value="${datasource.url}" />
+			<property name="username" value="${datasource.username}" />
+			<property name="password" value="${datasource.password}" />
+	        <property name="initialSize" value="${datasource.druid.initialSize}" />  
+	        <property name="minIdle" value="${datasource.druid.minIdle}" />   
+	        <property name="maxActive" value="${datasource.druid.maxActive}" /> 
+	        <property name="maxWait" value="${datasource.druid.maxWait}" />  
+	        <property name="timeBetweenEvictionRunsMillis" value="${datasource.druid.timeBetweenEvictionRunsMillis}" />
+	        <property name="minEvictableIdleTimeMillis" value="${datasource.druid.minEvictableIdleTimeMillis}" />
+	        <property name="validationQuery" value="${datasource.druid.validationQuery}" /> 
+	        <property name="testWhileIdle" value="${datasource.druid.testWhileIdle}" />
+	        <property name="testOnBorrow" value="${datasource.druid.testOnBorrow}" />
+	        <property name="testOnReturn" value="${datasource.druid.testOnReturn}" />
+	        <property name="poolPreparedStatements" value="${datasource.druid.poolPreparedStatements}" />
+			<property name="maxPoolPreparedStatementPerConnectionSize" value="${datasource.druid.maxPoolPreparedStatementPerConnectionSize}" />
+			<property name="filters" value="${datasource.druid.filters}" />
+			<property name="connectionProperties" value="${datasource.druid.connectionProperties}" />
+			<property name="proxyFilters">
+				<list>
+					<ref bean="logFilter" />
+					<ref bean="statFilter" />
+				</list>
+			</property>  
+		</bean>
+		<!-- 慢SQL记录 -->
+	    <bean id="statFilter" class="com.alibaba.druid.filter.stat.StatFilter">
+	        <!-- 慢sql时间设置,即执行时间大于200毫秒的都是慢sql -->
+	        <property name="slowSqlMillis" value="5"/>
+	        <property name="logSlowSql" value="true"/>
+	    </bean>
+	    <bean id="logFilter" class="com.alibaba.druid.filter.logging.Slf4jLogFilter"> 
+	        <property name="statementExecutableSqlLogEnable" value="false" /> 
+	    </bean>
+		<!-- Orange Add druid开启spring监控  -->
+	    <bean id="druid-stat-interceptor" class="com.alibaba.druid.support.spring.stat.DruidStatInterceptor"></bean>
+	    <bean id="druid-stat-pointcut" class="org.springframework.aop.support.JdkRegexpMethodPointcut" scope="prototype">
+	        <property name="patterns">
+	            <list>
+	                <value>com.mingtech.application.*</value>
+	                <value>com.mingtech.framework.*</value>
+	            </list>
+	        </property>
+    	</bean>
+    	
+		<!-- DB2 SYBASE SQLSERVER MYSQL  -->
+	  
+		<bean id="oracleLobHandler" class="org.springframework.jdbc.support.lob.DefaultLobHandler" />
+	
+
+	<!-- Oracle9i本地Connection抽取器，
+		因为Oracle9i非常特殊，所以Oracle10i又和其它数据库在处理Lob字段上是一样的，
+		但考虑到Oracle9i的兼容性，这里还是注入了本地Connection抽取器。
+	-->
+	
+	<!-- 
+	<bean id="nativeJdbcExtractor" class="org.springframework.jdbc.support.nativejdbc.CommonsDbcpNativeJdbcExtractor" lazy-init="true" />
+	  -->
+	
+	<!--  在WebSphere下用WebSphereNativeJdbcExtractor抽取器  -->
+	<!--
+	<bean id="nativeJdbcExtractor" class="org.springframework.jdbc.support.nativejdbc.WebSphereNativeJdbcExtractor"
+		lazy-init="true" />
+	-->
+	
+	<!-- LobHandler内置LobCreator，默认可用DefaultLobHandler
+		来处理几乎Oracle以外的所有数据库，但因为Oracle9i的特殊性，
+		不得不使用OracleLobHandler -->
+	<!--  
+	<bean id="oracleLobHandler" class="org.springframework.jdbc.support.lob.DefaultLobHandler" lazy-init="true">
+		<property name="nativeJdbcExtractor">
+			<ref local="nativeJdbcExtractor" />
+		</property>
+	</bean>
+   -->
+
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+	<!-- <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean"> -->
+		<property name="dataSource" ref="ecdsDataSource" />
+		<property name="mappingLocations">
+			<list>
+				<value>classpath*:/com/**/*.hbm.xml</value>
+			</list>
+		</property>
+		<!-- <property name="annotatedClasses">
+			<value>com.mingtech.application.pool.rule.domain.PedRule</value>
+		</property> -->
+
+		<property name="lobHandler">
+			<ref local="oracleLobHandler" />
+		</property>
+
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+				<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+				<prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
+				<prop key="hibernate.use_sql_comments">${hibernate.use_sql_comments}</prop>
+				<prop key="hibernate.jdbc.fetch_size">${hibernate.jdbc.fetch_size}</prop>
+				<prop key="hibernate.jdbc.batch_size">${hibernate.jdbc.batch_size}</prop>
+				<prop key="hibernate.connection.release_mode">${hibernate.connection.release_mode}</prop>
+				<prop key="hibernate.current_session_context_class">${hibernate.current_session_context_class}</prop>
+				<prop key="hibernate.jdbc.batch_versioned_data">${hibernate.jdbc.batch_versioned_data}</prop>
+				<prop key="hibernate.connection.autocommit">${hibernate.connection.autocommit}</prop>
+				<prop key="hibernate.bytecode.use_reflection_optimizer">${hibernate.bytecode.use_reflection_optimizer}</prop>
+				<prop key="hibernate.generate_statistics">${hibernate.generate_statistics}</prop>
+				<prop key="hibernate.cache.provider_class">${hibernate.cache.provider_class}</prop>
+				<prop key="hibernate.cache.use_query_cache">${hibernate.cache.use_query_cache}</prop>
+				<prop key="hibernate.cache.use_second_level_cache">${hibernate.cache.use_second_level_cache}</prop>
+				<prop key="hibernate.cache.use_minimal_puts">${hibernate.cache.use_minimal_puts}</prop>
+				<prop key="hibernate.cache.use_structured_entries">${hibernate.cache.use_structured_entries}</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory">
+			<ref local="sessionFactory" />
+		</property>
+	</bean>
+
+	<!-- 引用ehCache的配置 -->
+	<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+		<property name="configLocation">
+			<value>classpath:ehcache.xml</value>
+		</property>
+	</bean>
+
+	<!-- 定义ehCache的工厂，并设置所使用的Cache name -->
+
+	<bean id="cache" class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+		<property name="cacheManager">
+			<ref local="cacheManager" />
+		</property>
+		<property name="cacheName">
+			<value>ROCKET_CACHE</value>
+		</property>
+	</bean>
+
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<!-- methods starting tx, just as 'save', 'update' or 'remove' use the default transaction settings -->
+			<tx:method name="tx*" rollback-for="Exception"/>
+			<!-- other methods are set to read only -->
+			<tx:method name="*" read-only="true" />
+			<!-- 日终任务 几个类设置为 独立事务 -->
+			<tx:method name="txSaveUpdateTaskLog" propagation="REQUIRES_NEW" />
+			<tx:method name="txSaveTaskLog" propagation="REQUIRES_NEW" />
+			<tx:method name="txUpdateTaskStatus" propagation="REQUIRES_NEW" />
+			<!-- 保存额度操作历史设置为 独立事务 -->
+			<tx:method name="txSaveBankLimitHistory" propagation="REQUIRES_NEW" />
+			<tx:method name="txGetBatchNo" propagation="REQUIRES_NEW" />
+			<tx:method name="txGetPjcNo" propagation="REQUIRES_NEW" />
+			<!-- 额度释放/占用设置为 独立事务 -->
+			<tx:method name="txSaveBankLimit" propagation="REQUIRES_NEW" />
+			<tx:method name="txGetHxBachNo" propagation="REQUIRES_NEW" />
+			<tx:method name="txGetServiceSn" propagation="REQUIRES_NEW" />
+			<tx:method name="txSendAccountBusinessHandler" propagation="REQUIRES_NEW" />
+			<tx:method name="txeditAccountBusinessHandler" propagation="REQUIRES_NEW" />
+			
+			<!-- 村行事务 -->
+			<tx:method name="txSaveVillageBankLimit" propagation="REQUIRES_NEW" />
+			<tx:method name="txSaveVillageBankLimitHistory" propagation="REQUIRES_NEW" />
+			<!-- 记账流水独立事务 -->
+			<tx:method name="txSaveBusiAcctFlowStart" propagation="REQUIRES_NEW" />
+			<tx:method name="txSaveBusiAcctFlowEnd" propagation="REQUIRES_NEW" />
+			<!-- 票据池额度占用、释放 独立事务 2017 -->
+			<tx:method name="txCalculateCrdtAmt" propagation="REQUIRES_NEW" />
+			<!-- 资产池业务处理授权 -->
+	        <tx:method name="txGetAssetPoolTransAuthority" propagation="REQUIRES_NEW" />
+	        <!-- 资产池业务处理授权释放 -->
+	        <tx:method name="txReleaseAssetPoolTransAuthority" propagation="REQUIRES_NEW" />
+			<!-- 额度试算时，保存数据 -->
+			<tx:method name="txCreateList" propagation="REQUIRES_NEW" />
+			<!-- 额度试算时，删除数据 -->
+			<tx:method name="txDelList" propagation="REQUIRES_NEW" />
+			<!-- 强制性保存,独立事务保存，该方法用于需要先生成ID的特殊情况 -->
+			<tx:method name="txForcedSaveList" propagation="REQUIRES_NEW" />
+			<!-- 保存自动任务流水 -->
+			<tx:method name="txSaveAutoTaskExe" propagation="REQUIRES_NEW" />
+			<!-- 在线业务日志保存方法 -->
+			<tx:method name="txSaveTrdeLog" propagation="REQUIRES_NEW" />
+			<!-- 在线流贷额度占用 -->
+			<tx:method name="txOnlineCreditUsed" propagation="REQUIRES_NEW" />
+			<!-- 重新计算每个票据池的额度信息 -->
+			<tx:method name="txReCreditCalculationTask" propagation="REQUIRES_NEW" />
+			<!-- 日志保存事务 1/2/3 -->
+			<tx:method name="txStoreSendMsg" propagation="REQUIRES_NEW" />
+			<tx:method name="txUpdateLog" propagation="REQUIRES_NEW" />
+			<tx:method name="txUpdateTransLogRec" propagation="REQUIRES_NEW" />
+			<!-- 生成借据号 -->
+			<tx:method name="txGetIOUNo" propagation="REQUIRES_NEW" />
+			
+			
+			
+			
+			
+			
+		</tx:attributes>
+	</tx:advice>
+
+	<!-- ensure that the above transactional advice runs for any execution   -->
+	<aop:config proxy-target-class="true">
+		<aop:pointcut id="txNetbank" expression="execution(* com.mingtech..*Service.tx*(..))" />
+		<aop:pointcut id="txMethods" expression="execution(* com.mingtech..*Handler.tx*(..))" />
+		<aop:pointcut id="txBatchNo" expression="execution(* com.mingtech..BatchNoUtils.tx*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="txNetbank" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="txMethods" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="txBatchNo" />
+	</aop:config>
+
+	<bean name="dao" class="com.mingtech.framework.core.dao.impl.GenericHibernateDao" />
+
+	<bean id="SpringContextUtil" class="com.mingtech.framework.common.util.SpringContextUtil" />
+	<bean id="systemConfig"	class="com.mingtech.framework.common.util.SystemConfig">
+		<property name="initPassword" value="${SystemConfig.initPassword}" />
+	</bean>
+</beans>

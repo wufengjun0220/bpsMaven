@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class table="cd_runstate" name="com.mingtech.application.runmanage.domain.RunState" dynamic-insert="true" dynamic-update="true">
+    <cache usage="read-write"/>
+    <id type="string" column="id" length="40" name="id">
+      <generator class="uuid.hex"/>
+    </id>
+    <property name="bankName" type="string" column="rs_bankName"/>
+    <property name="apId" type="string" column="rs_apId"/>
+    <property name="apName" type="string" column="rs_apName"/>
+    <property name="npcCode" length="4" type="string" column="rs_npcCode"/>
+    <property name="logonState" type="string" column="rs_logonState"/>
+    <property name="oldPwd" type="string" column="rs_oldPwd"/>
+    <property name="newPwd" type="string" column="rs_newPwd"/>
+    <property name="orgnlSysDt" type="date" column="rs_orgnlSysDt"/>
+    <property name="orgnlSysSts" type="string" column="rs_orgnlSysSts"/>
+    <property name="curDate" type="date" column="rs_curDate"/>
+    <property name="sysState" type="string" column="rs_sysState"/>
+    <property name="nextDate" type="date" column="rs_nextDate"/>
+    <property name="bizRefTm" type="string" column="rs_bizRefTm"/>
+    <property name="rmrk" type="string" column="rs_rmrk"/>
+    <property name="crlLastUpdateTime" type="timestamp" column="rs_crlLastUpdateTime"/>
+    <property name="prcCd" type="string" column="rs_prcCd"/>
+    <property name="prcMsg" type="string" column="rs_prcMsg"/>
+    <property name="bankCode" type="string" column="rs_bankCode"/>
+    <property name="pfxPath" length="50" type="string" column="rs_pfxPath"/>
+    <property name="pfxPassword" length="20" type="string" column="rs_pfxPassword"/>
+    <property name="crlPath" length="50" type="string" column="rs_crlPath"/>
+    <property name="sttlmOnlineMrk" length="4" type="string" column="rs_sttlmOnlineMrk"/>
+    <property name="sttlmOnlineRmrk" length="60" type="string" column="rs_sttlmOnlineRmrk"/>
+    <property name="hvpsNxtSysDt" type="date" column="rs_hvpsNxtSysDt"/>
+    <property name="pfxFileName" length="100" type="string" column="rs_pfxFileName"/>
+    <property name="unifyKey" length="4" type="string" column="rs_unifyKey"/>
+    <property name="npcStatus" length="10" type="string" column="rs_npcStatus"/>
+    <property name="ccpcCode" length="30" type="string" column="rs_ccpcCode"/>
+    <property name="ccpcStatus" length="10" type="string" column="rs_ccpcStatus"/>
+    <property name="sysPartner" length="10" type="string" column="rs_sysPartner"/>
+    <property name="operSwitch" length="10" type="string" column="rs_operSwitch"/>
+    <property name="swithType" length="10" type="string" column="RS_SWITCHTYPE"/>
+    <property name="region" length="10" type="string" column="cd_region"/>
+    <property name="bankcodetype" length="10" type="string" column="cd_bankcodetype"/> 
+    <property name="workDate" type="date" column="WORK_DATE"/>
+    <property name="systemSwitch" length="10" type="string" column="SYSTEM_STITCH"/> 
+    
+  </class>
+</hibernate-mapping>

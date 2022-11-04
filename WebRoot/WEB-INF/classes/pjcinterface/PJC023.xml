@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<head>
+	<!-- SysHead -->
+	<messageElement name="SERVICE_CODE" description="服务代码" length="30" dataType="string" format="" mandatory="m" dataSource="xml" value="11003000002" type="sh"/>
+	<messageElement name="SERVICE_SCENE" description="服务应用场景" length="2" dataType="string" format="" mandatory="m" dataSource="xml" value="45" type="sh"/>
+	<messageElement name="CONSUMER_ID" description="请求系统编号" length="6" dataType="string" format="" mandatory="m" dataSource="xml" value="BLL001" type="sh"/>
+	<messageElement name="ORG_SYS_ID" description="发起方系统编号" length="6" dataType="string" format="" mandatory="o" dataSource="xml" value="1001" type="sh"/>
+	<messageElement name="TRAN_MODE" description="交易模式" length="10" dataType="string" format="" mandatory="o" dataSource="xml" value="ONLINE" type="sh"/>
+	<messageElement name="SOURCE_TYPE" description="渠道类型" length="10" dataType="string" format="" mandatory="o" dataSource="xml" value="" type="sh"/>
+	<messageElement name="BRANCH_ID" description="发送方机构ID" length="20" dataType="string" format="" mandatory="m" dataSource="map" value="" type="sh"/>
+	<messageElement name="USER_ID" description="服务请求者身份" length="30" dataType="string" format="" mandatory="m" dataSource="map" value="" type="sh"/>
+	<messageElement name="CONSUMER_SEQ_NO" description="服务请求发送方流水号" length="52" dataType="string" format="" mandatory="m" dataSource="map" value="" type="sh"/>
+	<messageElement name="BUSS_SEQ_NO" description="业务流水号" length="52" dataType="string" format="" mandatory="o" dataSource="xml" value="" type="sh"/>
+	<messageElement name="CONSUMER_SVR_ID" description="发起方服务器标识" length="30" dataType="string" format="" mandatory="o" dataSource="xml" value="" type="sh"/>
+	<messageElement name="WS_ID" description="终端标识" length="30" dataType="string" format="" mandatory="o" dataSource="xml" value="" type="sh"/>
+	<messageElement name="TRAN_DATE" description="发送方交易日期" length="8" dataType="string" format="" mandatory="m" dataSource="map" value="" type="sh"/>
+	<messageElement name="TRAN_TIMESTAMP" description="发送方交易时间" length="9" dataType="string" format="" mandatory="m" dataSource="map" value="" type="sh"/>
+	
+	<!-- AppHead -->
+	<messageElement name="PGUP_OR_PGDN" description="上翻/下翻标志" length="1" dataType="string" format="" mandatory="o" dataSource="xml" value="1" type="ah"/>
+	<messageElement name="PER_PAGE_NUM" description="要求每页返回记录总数" length="10" dataType="string" format="" mandatory="o" dataSource="xml" value="20" type="ah"/>
+	
+	<!-- LocalHead -->
+	
+	<!-- FileHead -->	
+	
+	<!-- Body -->
+	<messageElement name="CORE_CLIENT_NO" description="核心客户号" length="30" dataType="string" format="" mandatory="m" dataSource="map" value="" type="mb"/>
+	<messageElement name="BPS_NO" description="票据池编号" length="10" dataType="string" format="" mandatory="m" dataSource="map" value="" type="mb"/>
+	<messageElement name="QUERY_TYPE" description="查询模式" length="10" dataType="string" format="" mandatory="m" dataSource="map" value="" type="mb"/>
+	<messageElement name="START_DATE" description="开始日期"  length="8" dataType="string" format="" mandatory="m" dataSource="map" value="" type="mb"/>
+	<messageElement name="EXPIRY_DATE" description="结束日期"  length="8" dataType="string" format="" mandatory="m" dataSource="map" value="" type="mb"/>		
+</head>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<head>
+	<!-- SysHead -->
+	<messageElement name="SERVICE_CODE" description="服务代码" length="30" dataType="string" format="" mandatory="m" dataSource="xml" value="11002000051" type="sh"/>
+	<messageElement name="SERVICE_SCENE" description="服务应用场景" length="2" dataType="string" format="" mandatory="m" dataSource="xml" value="08" type="sh"/>
+	<messageElement name="CONSUMER_ID" description="请求系统编号" length="6" dataType="string" format="" mandatory="m" dataSource="xml" value="302009" type="sh"/>
+	<messageElement name="ORG_SYS_ID" description="发起方系统编号" length="6" dataType="string" format="" mandatory="o" dataSource="xml" value="1001" type="sh"/>
+	<messageElement name="TRAN_MODE" description="交易模式" length="10" dataType="string" format="" mandatory="o" dataSource="xml" value="ONLINE" type="sh"/>
+	<messageElement name="SOURCE_TYPE" description="渠道类型" length="10" dataType="string" format="" mandatory="o" dataSource="xml" value="54" type="sh"/>
+	<messageElement name="BRANCH_ID" description="发送方机构ID" length="20" dataType="string" format="" mandatory="m" dataSource="map" value="10000" type="sh"/>
+	<messageElement name="USER_ID" description="服务请求者身份" length="30" dataType="string" format="" mandatory="m" dataSource="map" value="p10000" type="sh"/>
+	<messageElement name="CONSUMER_SEQ_NO" description="服务请求发送方流水号" length="52" dataType="string" format="" mandatory="m" dataSource="map" value="" type="sh"/>
+	<messageElement name="BUSS_SEQ_NO" description="业务流水号" length="52" dataType="string" format="" mandatory="o" dataSource="xml" value="" type="sh"/>
+	<messageElement name="CONSUMER_SVR_ID" description="发起方服务器标识" length="30" dataType="string" format="" mandatory="o" dataSource="xml" value="BPS00001" type="sh"/>
+	<messageElement name="WS_ID" description="终端标识" length="30" dataType="string" format="" mandatory="o" dataSource="xml" value="" type="sh"/>
+	<messageElement name="TRAN_DATE" description="发送方交易日期" length="8" dataType="string" format="" mandatory="m" dataSource="map" value="" type="sh"/>
+	<messageElement name="TRAN_TIMESTAMP" description="发送方交易时间" length="9" dataType="string" format="" mandatory="m" dataSource="map" value="" type="sh"/>
+	
+	<!-- AppHead -->
+	<messageElement name="PGUP_OR_PGDN" description="上翻/下翻标志" length="1" dataType="string" format="" mandatory="o" dataSource="xml" value="1" type="ah"/>
+	<messageElement name="PER_PAGE_NUM" description="要求每页返回记录总数" length="10" dataType="string" format="" mandatory="o" dataSource="xml" value="20" type="ah"/>
+	
+	<!-- LocalHead -->
+	
+	<!-- FileHead -->	
+	
+	<!-- Body -->
+	
+	<messageElement name="E_SIGN" description="电子签名" length="2000" dataType="string" format="" mandatory="m" dataSource="map" value="" type="mb" />
+	<messageElement name="APPLYER_BATCH_REMARK" description="申请人批次备注" length="256" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="APPLYER_ACCT_NO" description="申请人账号" length="32" dataType="string" format="" mandatory="m" dataSource="map" value="" type="mb" />
+	<messageElement name="APPLYER_ACCT_TYPE" description="申请人账号类型" length="20" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="APPLYER_OPEN_BANK_NO" description="申请人账号开户行行号" length="12" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="APPLYER_CLIENT_NO" description="申请人客户编号" length="50" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="CONTRACT_NO" description="合同号" length="50" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="INVOICE_NO" description="发票号码" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="BATCH_NO" description="批次号" length="150" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+
+	<!-- 票据信息数组 -->
+	<messageElement name="BILL_INFO_ARRAY.AUTO_PROMPT_ACCEPTOR_FLAG" description="自动提示承兑标志" length="1" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="BILL_INFO_ARRAY.AUTOO_PROMPT_RECV_FLAG" description="自动提示收票标志" length="2" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="BILL_INFO_ARRAY.OPERATION_TYPE" description="操作类型" length="10" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="BILL_INFO_ARRAY.BILL_SOURCE" description="票据来源" length="20" dataType="string" format="" mandatory="m" dataSource="map" value="" type="db" />
+	<messageElement name="BILL_INFO_ARRAY.TRAN_NO" description="交易编号" length="30" dataType="string" format="" mandatory="m" dataSource="map" value="" type="db" />
+	<messageElement name="BILL_INFO_ARRAY.BILL_NO" description="票据（包）号码" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="BILL_INFO_ARRAY.HOLD_BILL_ID" description="持票id" length="18" dataType="string" format="" mandatory="m" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.BILL_ID" description="票据id" length="18" dataType="string" format="" mandatory="m" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.START_BILL_NO" description="子票区间起始" length="12" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.END_BILL_NO" description="子票区间截至" length="12" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.TRAN_AMT" description="交易金额" length="20" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.APPLYER_DETAIL_REMARK" description="申请人明细备注" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.CONTRACT_INFO" description="交易合同信息" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.INVOICE_NO" description="发票号码" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.BATCH_NO" description="批次号" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.SOURCE_CHANNEL_NO" description="渠道来源" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.TRAN_SEQ_NO" description="交易发起流水号" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.APP_LOCK_TYPE" description="经办锁类型" length="2" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db"/>
+	
+	<!--  背书信息数组-->
+	<messageElement name="BILL_INFO_ARRAY.ENDORSE_INFO_ARRAY.ENDORSE_DATE" description="背书日期" length="30" dataType="string" format="" mandatory="m" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.ENDORSE_INFO_ARRAY.ENDORSEE_NAME" description="被背书人名称" length="30" dataType="string" format="" mandatory="m" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.ENDORSE_INFO_ARRAY.ENDORSEE_ACCT_NO" description="被背书人账号" length="30" dataType="string" format="" mandatory="m" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.ENDORSE_INFO_ARRAY.ENDORSEE_ACCT_NAME" description="被背书人账户名称" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.ENDORSE_INFO_ARRAY.ENDORSEE_OPEN_BANK_NO" description="被背书人开户行号" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.ENDORSE_INFO_ARRAY.ENDORSEE_OPEN_BANK_NAME" description="被背书人开户行名" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.ENDORSE_INFO_ARRAY.ENDORSEE_TRANSACT_CHANNEL_NO" description="被背书人业务办理渠道代码" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.ENDORSE_INFO_ARRAY.ENDORSEE_ACCT_TYPE" description="被背书人识别类型" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.ENDORSE_INFO_ARRAY.REMARK" description="备注" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.ENDORSE_INFO_ARRAY.UNENDORSE_FLAG" description="禁止背书标记" length="4" dataType="string" format="" mandatory="m" dataSource="map" value="" type="db"/>
+	
+	<!-- 贴现信息数组-->
+	<messageElement name="BILL_INFO_ARRAY.DISCOUNT_INFO_ARRAY.DISCOUNT_TYPE" description="贴现类型" length="20" dataType="string" format="" mandatory="m" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.DISCOUNT_INFO_ARRAY.DISCOUNT_CATEGORY" description="贴现种类" length="20" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.DISCOUNT_INFO_ARRAY.DISCOUNT_INT_RATE" description="贴现利率" length="20" dataType="string" format="" mandatory="m" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.DISCOUNT_INFO_ARRAY.DISCOUNT_INT_RATE_TYPE" description="贴现利率类型" length="20" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.DISCOUNT_INFO_ARRAY.REAL_PAY_AMT" description="贴现实付金额" length="20" dataType="string" format="" mandatory="m" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.DISCOUNT_INFO_ARRAY.DISCOUNT_DATE" description="贴现日" length="8" dataType="string" format="" mandatory="m" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.DISCOUNT_INFO_ARRAY.REDEEM_OPEN_DATE" description="赎回开放日" length="8" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.DISCOUNT_INFO_ARRAY.REDEEM_END_DATE" description="赎回截止日" length="8" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.DISCOUNT_INFO_ARRAY.REDEEM_INT_RATE" description="赎回利率" length="20" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.DISCOUNT_INFO_ARRAY.REDEEM_INT_RATE_TYPE" description="赎回利率类型" length="20" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.DISCOUNT_INFO_ARRAY.REDEEM_AMT" description="赎回金额" length="20" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.DISCOUNT_INFO_ARRAY.DISCOUNT_IN_BANK_NAME" description="贴入行名" length="60" dataType="string" format="" mandatory="m" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.DISCOUNT_INFO_ARRAY.DISCOUNT_IN_PERSON_NAME" description="贴入人名称" length="200" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.DISCOUNT_INFO_ARRAY.DISCOUNT_IN_BANK_NO" description="贴入人行号" length="12" dataType="string" format="" mandatory="m" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.DISCOUNT_INFO_ARRAY.DISCOUNT_IN_ACCT_NO" description="贴入行账号" length="32" dataType="string" format="" mandatory="m" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.DISCOUNT_INFO_ARRAY.ENTER_ACCT_NO" description="入账账号" length="32" dataType="string" format="" mandatory="m" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.DISCOUNT_INFO_ARRAY.ENTER_ACCT_NAME" description="入账账户名称" length="150" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.DISCOUNT_INFO_ARRAY.ENTER_BANK_NO" description="入账行号" length="12" dataType="string" format="" mandatory="m" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.DISCOUNT_INFO_ARRAY.UNENDORSE_FLAG" description="禁止背书标记" length="4" dataType="string" format="" mandatory="m" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.DISCOUNT_INFO_ARRAY.FORCE_DICOUNT_FLAG" description="强制贴现标志" length="1" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.DISCOUNT_INFO_ARRAY.LOCK_FLAG" description="锁票标志" length="1" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.DISCOUNT_INFO_ARRAY.SETTLE_TYPE" description="结算方式" length="10" dataType="string" format="" mandatory="m" dataSource="map" value="" type="db"/>
+	
+	<!-- 质押信息数组-->
+	
+	<messageElement name="BILL_INFO_ARRAY.PLEDGE_INFO_ARRAY.PLEDGEE_DATE" description="质权日期" length="8" dataType="string" format="" mandatory="m" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.PLEDGE_INFO_ARRAY.PLEDGEE_NAME" description="质权人名称" length="60" dataType="string" format="" mandatory="m" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.PLEDGE_INFO_ARRAY.PLEDGEE_ACCT_NO" description="质权人账号" length="32" dataType="string" format="" mandatory="m" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.PLEDGE_INFO_ARRAY.PLEDGEE_ACCT_NAME" description="质权人账户名称" length="150" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.PLEDGE_INFO_ARRAY.PLEDGEE_OPEN_BANK_NO" description="质权人开户行行号" length="12" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.PLEDGE_INFO_ARRAY.PLEDGEE_OPEN_BANK_NAME" description="质权人开户行行名" length="60" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.PLEDGE_INFO_ARRAY.PLEDGEE_TRANSACT_CHANNEL_NO" description="质权人业务办理渠道代码" length="6" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.PLEDGE_INFO_ARRAY.PLEDGEE_ACCT_TYPE" description="质权人识别类型" length="10" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.PLEDGE_INFO_ARRAY.INPOOL_FLAG" description="入池标志" length="1" dataType="string" format="" mandatory="m" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.PLEDGE_INFO_ARRAY.LOCK_FLAG" description="锁定标志" length="1" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db"/>
+	
+	<!-- 解质押信息数组-->
+	<messageElement name="BILL_INFO_ARRAY.UNPLEDGE_INFO_ARRAY.UNPLEDGE_DATE" description="质押解除日期" length="8" dataType="string" format="" mandatory="m" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.UNPLEDGE_INFO_ARRAY.UNPLEDGE_BRANCH_NO" description="质押解除机构号" length="18" dataType="string" format="" mandatory="m" dataSource="map" value="" type="db"/>
+	
+	
+	<!-- 提示付款信息数组-->
+	<messageElement name="BILL_INFO_ARRAY.PROMPT_PAY_INFO_ARRAY.INPOOL_FLAG" description="入池标志" length="1" dataType="string" format="" mandatory="m" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.PROMPT_PAY_INFO_ARRAY.LOCK_FLAG" description="锁定标志" length="1" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.PROMPT_PAY_INFO_ARRAY.PROMPT_PAY_BRANCH_NO" description="提示付款机构号" length="20" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.PROMPT_PAY_INFO_ARRAY.REMARK" description="备注" length="300" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.PROMPT_PAY_INFO_ARRAY.PROMPT_PAY_DATE" description="提示付款申请日期" length="8" dataType="string" format="" mandatory="m" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.PROMPT_PAY_INFO_ARRAY.PROMPT_PAY_AMT" description="提示付款金额" length="20" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.PROMPT_PAY_INFO_ARRAY.SETTLE_TYPE" description="结算方式" length="10" dataType="string" format="" mandatory="m" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.PROMPT_PAY_INFO_ARRAY.OUT_TIME_REASON" description="逾期原因说明" length="60" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db"/>
+	
+	
+	<!-- 追索信息数组-->
+	<messageElement name="BILL_INFO_ARRAY.RECOURSE_INFO_ARRAY.RECOURSE_ID" description="追索id" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.RECOURSE_INFO_ARRAY.REMARK" description="备注" length="300" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.RECOURSE_INFO_ARRAY.RECOURSE_DATE" description="追索通知日期" length="8" dataType="string" format="" mandatory="y" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.RECOURSE_INFO_ARRAY.RECOURSE_AMT" description="追索金额" length="20" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.RECOURSE_INFO_ARRAY.RECOURSE_REASON_CODE" description="追索理由代码" length="200" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.RECOURSE_INFO_ARRAY.TO_RECOURSE_NAME" description="被追索人名称" length="60" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.RECOURSE_INFO_ARRAY.TO_RECOURSE_ORG_CODE" description="被追索人组织机构代码/同一社会信用代码" length="60" dataType="string" format="" mandatory="m" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.RECOURSE_INFO_ARRAY.RECOURSED_OPEN_BANK_NO" description="被追索人开户行行号" length="12" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.RECOURSE_INFO_ARRAY.RECOURSED_OPEN_BANK_NAME" description="被追索人开户行行名" length="60" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db"/>
+	<messageElement name="BILL_INFO_ARRAY.RECOURSE_INFO_ARRAY.RECOURSED_ACCT_NO" description="被追索人账号" length="32" dataType="string" format="" mandatory="m" dataSource="map" value="" type="db"/>
+	
+	
+	<!-- 追索信息数组-->
+	
+	<!-- 票据信息数组 -->
+	
+
+	<!-- Detail -->	
+		
+</head>

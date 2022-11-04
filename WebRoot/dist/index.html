@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="zh-cn" style="height: 100%;margin: 0;padding: 0;">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <!--<meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+    <title>汉口银行票据池系统</title>
+    <link rel="stylesheet" type="text/css" href="dist/index.css">
+    <link rel="stylesheet/less" type="text/css" href="dist/color.less" />
+    <link rel="stylesheet/less" type="text/css" href="dist/index.less" />
+    <style type="text/css">
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track:hover {
+            border-radius: 2px;
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+
+        ::-webkit-scrollbar-thumb:horizontal {
+            border-top: 4px solid transparent;
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+        }
+
+        ::-webkit-scrollbar-thumb:vertical {
+            border-left: 4px solid transparent;
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            border: none;
+            border-radius: 2px;
+            background-color: rgba(150, 150, 150, 0.80);
+        }
+
+        ::-webkit-scrollbar-corner {
+            background: transparent;
+        }
+
+        .loading {
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            color: #bbb;
+            vertical-align: middle;
+            pointer-events: none;
+            border: .2em solid transparent;
+            border-top-color: currentcolor;
+            border-radius: 50%;
+            animation: 1s loading linear infinite;
+            position: relative;
+        }
+
+        .loading:before {
+            content: '';
+            display: block;
+            width: inherit;
+            height: inherit;
+            position: absolute;
+            top: -.2em;
+            left: -.2em;
+            border: .2em solid currentcolor;
+            border-radius: 50%;
+            opacity: .5;
+        }
+
+        @keyframes loading {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .close {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            height: 26px;
+            width: 26px;
+            line-height: 26px;
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.6);
+            border: none;
+            cursor: pointer;
+        }
+
+        .close::before {
+            content: "\2716";
+        }
+
+        /*#main_menu::-webkit-scrollbar {
+      width: 0px;
+      height: 0px;
+    }*/
+
+        .ant-table-body {
+            overflow-x: auto !important;
+        }
+
+        .ant-table td,
+        th {
+            white-space: nowrap;
+            /*padding: 10px 10px !important;*/
+        }
+
+        .ant-table-fixed-columns-in-body {
+            width: 1px;
+        }
+
+        .ant-modal-centered {
+            white-space: nowrap;
+        }
+
+        .ant-modal-centered .ant-modal {
+            padding-top: 24px;
+        }
+
+        .ant-modal-centered .ant-modal-body {
+            /* max-height: calc(100vh - 172px); */
+            overflow: auto;
+        }
+
+        .ant-select-tree-dropdown {
+            text-align: left;
+        }
+
+        .ant-select-dropdown {
+            text-align: left;
+        }
+
+        .ant-tabs-nav .ant-tabs-tab:first-child.ant-tabs-tab-active {
+            border-left: none;
+        }
+
+        .ant-transfer-list-body-customize-wrapper {
+            padding: 0 !important;
+            height: 100%;
+            overflow: auto;
+        }
+
+        /*跑马灯变为黑灰色*/
+
+        .ant-carousel .slick-dots-bottom {
+            bottom: 6px !important;
+        }
+
+        .ant-carousel .slick-dots li.slick-active button {
+            width: 16px !important;
+            background: rgba(0, 0, 0, 0.8) !important;
+        }
+
+        .ant-carousel .slick-dots li button {
+            width: 12px !important;
+            background: rgba(0, 0, 0, 0.5) !important;
+        }
+
+        .ant-table-selection-column {
+            padding-left: 22px !important;
+            padding-right: 22px !important;
+        }
+
+        /*.ant-modal-header {
+      padding: 8px 18px !important;
+    }
+
+    .ant-modal-close-x {
+      width: 40px !important;
+      height: 40px !important;
+      line-height: 40px !important;
+    }*/
+    </style>
+</head>
+
+<body style="height: 100%;margin: 0;padding: 0;border: 0;">
+    <div id="root" style="position: absolute;width: 100%;height: 100%;left: 0px;top: 0px;">
+        <div style="width: 100%;height: 100%;background: rgba(0,0,0,0.7);color: #fff;text-align: center;">
+            <div style="display: inline-block;height: 100%;width: 0;vertical-align: middle;"></div>
+            <div style="display: inline-block;vertical-align: middle;">loading...</div>
+        </div>
+        <!--[if lte IE 8]>
+        <table id="tb_run" style="position: absolute;width: 100%;height: 100%;left: 0px;top: 0px;background-color: #2F3242;display: none;">
+            <tr>
+                <td style="text-align: center;vertical-align: middle;color: #fff;font-size: 36px;">
+                     <input type="button" value="启动" onclick="location.href = 'chrome:'" style="width: 220px; height: 85px;background-color: #0CB0CC;outline: none;border:none;border-radius: 70px;color: #fff;"
+                    />
+                    <p style="font-size: 18px;color: #4F94CD;margin-top: 50px;">
+                        运行需要客户端支持，如未安装请
+                        <a href='dist/platform-client.exe' style="color: #4f80ff;">点此下载</a>。
+                    </p>
+                </td>
+            </tr>
+        </table>
+                <script type="text/javascript">
+            if (navigator.userAgent.indexOf("MSIE") !== -1 || navigator.userAgent.indexOf("Trident") !== -1) {
+                document.getElementById("tb_run").style.display = "table";
+                document.execCommand("stop");
+            }
+        </script>
+        <![endif]-->
+    </div>
+    <script>
+        window.less = {
+            async: true,
+            env: 'production',
+            javascriptEnabled: true
+        };
+    </script>
+    <script src="dist/less.min.js"></script>
+    <script src="dist/polyfill.js"></script>
+    <script src="dist/index.js"></script>
+</body>
+
+</html>

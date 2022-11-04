@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<head>
+	<!-- SysHead -->
+	<messageElement name="SERVICE_CODE" description="服务代码" length="30" dataType="string" format="" mandatory="m" dataSource="xml" value="11001000003" type="sh"/>
+	<messageElement name="SERVICE_SCENE" description="服务应用场景" length="2" dataType="string" format="" mandatory="m" dataSource="xml" value="33" type="sh"/>
+	<messageElement name="PROVIDER_ID" description="服务系统编号" length="6" dataType="string" format="" mandatory="m" dataSource="map" value="" type="sh"/>
+	<messageElement name="CONSUMER_ID" description="请求系统编号" length="6" dataType="string" format="" mandatory="o" dataSource="xml" value="BLL001" type="sh"/>
+	<messageElement name="ORG_SYS_ID" description="发起方系统编号" length="6" dataType="string" format="" mandatory="o" dataSource="xml" value="" type="sh"/>
+	<messageElement name="BRANCH_ID" description="发送方机构ID" length="20" dataType="string" format="" mandatory="o" dataSource="map" value="" type="sh"/>
+	<messageElement name="USER_ID" description="服务请求者身份" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="sh"/>
+	<messageElement name="CONSUMER_SEQ_NO" description="服务请求发送方流水号" length="52" dataType="string" format="" mandatory="o" dataSource="map" value="" type="sh"/>
+	<messageElement name="BUSS_SEQ_NO" description="业务流水号" length="52" dataType="string" format="" mandatory="o" dataSource="xml" value="" type="sh"/>
+	<messageElement name="ESB_SEQ_NO" description="ESB产生的流水号" length="52" dataType="string" format="" mandatory="o" dataSource="xml" value="" type="sh"/>
+	<messageElement name="SERV_SEQ_NO" description="服务系统流水号" length="52" dataType="string" format="" mandatory="o" dataSource="xml" value="" type="sh"/>
+	<messageElement name="TRAN_DATE" description="发送方交易日期" length="8" dataType="string" format="" mandatory="m" dataSource="map" value="" type="sh"/>
+	<messageElement name="TRAN_TIMESTAMP" description="发送方交易时间" length="9" dataType="string" format="" mandatory="m" dataSource="map" value="" type="sh"/>
+	<messageElement name="RET_STATUS" description="交易状态" length="1" dataType="string" format="" mandatory="m" dataSource="map" value="" type="sh"/>
+	<messageElement name="RET.RET_CODE" description="交易返回代码" length="9" dataType="string" format="" mandatory="m" dataSource="map" value="" type="sh"/>
+	<messageElement name="RET.RET_MSG" description="交易返回信息" length="9" dataType="string" format="" mandatory="m" dataSource="map" value="" type="sh"/>
+	
+	<!-- FileHead -->	
+	
+	<!-- Detail -->	
+		<messageElement name="BOOK_SERIAL_NO" description="预约编号" length="32" dataType="string" format="" mandatory="m" dataSource="map" value="3" type="mb" />
+		<messageElement name="FROZEN_NO" description="冻结编号" length="20" dataType="string" format="" mandatory="m" dataSource="map" value="3" type="mb" />
+		<messageElement name="PRO_CODE" description="业务处理码" length="30" dataType="string" format="" mandatory="m" dataSource="map" value="3" type="mb" />
+		<messageElement name="PRO_INFO" description="业务处理信息" length="300" dataType="string" format="" mandatory="m" dataSource="map" value="3" type="mb" />
+		<messageElement name="ZHB_DATE" description="智汇宝日期" length="8" dataType="string" format="" mandatory="m" dataSource="map" value="3" type="mb" />
+		<messageElement name="ZHB_SEQ_NO" description="智汇宝流水号" length="52" dataType="string" format="" mandatory="m" dataSource="map" value="3" type="mb" />
+		<messageElement name="PAY_CHANNEL_ID" description="汇路编号" length="100" dataType="string" format="" mandatory="m" dataSource="map" value="3" type="mb" />
+		<messageElement name="CHANNEL_DATE" description="渠道日期" length="8" dataType="string" format="" mandatory="m" dataSource="map" value="3" type="mb" />
+		<messageElement name="CHANNEL_SEQ_NO" description="渠道流水号" length="52" dataType="string" format="" mandatory="m" dataSource="map" value="3" type="mb" />
+		<messageElement name="BUSI_NO" description="业务受理编号" length="52" dataType="string" format="" mandatory="m" dataSource="map" value="3" type="mb" />
+		<messageElement name="HOST_TRAN_STATUS" description="主机交易状态" length="10" dataType="string" format="" mandatory="m" dataSource="map" value="3" type="mb" />
+		<messageElement name="CORE_DATE" description="核心日期" length="8" dataType="string" format="" mandatory="m" dataSource="map" value="3" type="mb" />
+		<messageElement name="CORE_SEQ_NO" description="核心流水号" length="52" dataType="string" format="" mandatory="m" dataSource="map" value="3" type="mb" />
+		<messageElement name="HOST_DATE" description="主机日期" length="8" dataType="string" format="" mandatory="m" dataSource="map" value="3" type="mb" />
+		<messageElement name="HOST_SEQ_NO" description="主机流水号" length="52" dataType="string" format="" mandatory="m" dataSource="map" value="3" type="mb" />
+
+	
+</head>

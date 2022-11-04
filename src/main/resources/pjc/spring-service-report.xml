@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd"
+	default-autowire="byName" default-lazy-init="false">
+	<!-- 报表生成任务分发调度队列 -->
+	<bean id="reportDispatchQueue" class="com.mingtech.application.pool.report.queue.ReportDispatchQueue" scope="singleton"/>
+	<!-- 报表生成任务监听-->
+	<bean id="reportTaskMonitor" class="com.mingtech.application.pool.report.monitor.ReportTaskMonitor" init-method="start"   destroy-method="stop">
+		<property name="threads" value="1"/>
+	</bean>
+</beans>

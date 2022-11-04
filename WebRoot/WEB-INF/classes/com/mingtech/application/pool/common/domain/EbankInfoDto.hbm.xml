@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.mingtech.application.pool.common.domain.EbankInfoDto"
+		table="PED_EBANKINFO" >
+		<id name="ebankId" type="java.lang.String">
+			<column name="E_EBANKID" length="40" />
+			<generator class="uuid.hex"></generator>
+		</id>
+        <property name="ebankName" type="java.lang.String">
+            <column name="E_EBANKNAME" length="60">
+                <comment>网银人员姓名</comment>
+            </column>
+        </property>
+         <property name="ebankPeopleCard" type="java.lang.String">
+            <column name="E_EBANKPEOPLECARD" length="30">
+                <comment>网银人员证件信息</comment>
+            </column>
+        </property>
+         <property name="ebankCustName" type="java.lang.String">
+            <column name="E_EBANKCUSTNAME" length="40">
+                <comment>人员名单归属客户名称</comment>
+            </column>
+        </property>
+         <property name="ebankPlCommId" type="java.lang.String">
+            <column name="E_EBANKPLCOMMID" length="40">
+                <comment>人员名单归属客户组织结构代码</comment>
+            </column>
+        </property>
+        <property name="ebankCustNum" type="java.lang.String">
+    		<column name="E_EBANKCUSTNUM" length="20">
+    		<comment>人员名单归属客户核心号</comment>
+    		</column>
+    	</property>
+    	 <property name="ebankCustId" type="java.lang.String">
+    		<column name="E_EBANKCUSTID" length="40">
+    		<comment>客户表id</comment>
+    		</column>
+    	</property>
+    	 <property name="ebankType" type="java.lang.String">
+    		<column name="E_EBANKTYPE" length="2">
+    		<comment>证件类型</comment>
+    		</column>
+    	</property>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<head>
+	<!-- SysHead -->
+	<messageElement name="SERVICE_CODE" description="服务代码" length="30" dataType="string" format="" mandatory="m" dataSource="xml" value="11003000007" type="sh"/>
+	<messageElement name="SERVICE_SCENE" description="服务应用场景" length="2" dataType="string" format="" mandatory="m" dataSource="xml" value="53" type="sh"/>
+	<messageElement name="CONSUMER_ID" description="请求系统编号" length="6" dataType="string" format="" mandatory="m" dataSource="xml" value="BLL001" type="sh"/>
+	<messageElement name="ORG_SYS_ID" description="发起方系统编号" length="6" dataType="string" format="" mandatory="o" dataSource="xml" value="1001" type="sh"/>
+	<messageElement name="TRAN_MODE" description="交易模式" length="10" dataType="string" format="" mandatory="o" dataSource="xml" value="ONLINE" type="sh"/>
+	<messageElement name="SOURCE_TYPE" description="渠道类型" length="10" dataType="string" format="" mandatory="o" dataSource="xml" value="" type="sh"/>
+	<messageElement name="BRANCH_ID" description="发送方机构ID" length="20" dataType="string" format="" mandatory="m" dataSource="map" value="10000" type="sh"/>
+	<messageElement name="USER_ID" description="服务请求者身份" length="30" dataType="string" format="" mandatory="m" dataSource="map" value="p10000" type="sh"/>
+	<messageElement name="CONSUMER_SEQ_NO" description="服务请求发送方流水号" length="52" dataType="string" format="" mandatory="m" dataSource="map" value="" type="sh"/>
+	<messageElement name="BUSS_SEQ_NO" description="业务流水号" length="52" dataType="string" format="" mandatory="o" dataSource="xml" value="" type="sh"/>
+	<messageElement name="CONSUMER_SVR_ID" description="发起方服务器标识" length="30" dataType="string" format="" mandatory="o" dataSource="xml" value="" type="sh"/>
+	<messageElement name="WS_ID" description="终端标识" length="30" dataType="string" format="" mandatory="o" dataSource="xml" value="" type="sh"/>
+	<messageElement name="TRAN_DATE" description="发送方交易日期" length="8" dataType="string" format="" mandatory="m" dataSource="map" value="" type="sh"/>
+	<messageElement name="TRAN_TIMESTAMP" description="发送方交易时间" length="9" dataType="string" format="" mandatory="m" dataSource="map" value="" type="sh"/>
+	<messageElement name="RET_STATUS" description="交易状态" length="1" dataType="string" format="" mandatory="m" dataSource="map" value="" type="sh"/>
+	<messageElement name="RET.RET_CODE" description="发送方交易时间" length="9" dataType="string" format="" mandatory="m" dataSource="map" value="" type="sh"/>
+	<messageElement name="RET.RET_MSG" description="发送方交易时间" length="9" dataType="string" format="" mandatory="m" dataSource="map" value="" type="sh"/>
+	
+	<!-- AppHead -->
+	
+	<!-- LocalHead -->
+	
+	<!-- FileHead -->	
+	
+	<!-- Body -->
+	<!--APP-->
+	<messageElement name="TOTAL_ROWS" description="总笔数" length="10" dataType="string" format="" mandatory="m" dataSource="map" value="" type="ah"/>
+	<messageElement name="TOTAL_PAGES" description="总页数" length="10" dataType="string" format="" mandatory="m" dataSource="map" value="" type="ah"/>
+	<messageElement name="QUERY_KEY" description="查询结果定位串" length="10" dataType="string" format="" mandatory="m" dataSource="map" value="" type="ah"/>
+	<messageElement name="TOTAL_NUM" description="本页记录总数" length="10" dataType="string" format="" mandatory="m" dataSource="map" value="" type="ah"/>
+
+	<!-- Detail -->
+	<!-- SIGN_INFO_ARRAY 协议签约信息数组 -->
+	<messageElement name="SIGN_INFO_ARRAY.AGREE_ID" description="秒贴协议ID" length="32" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="SIGN_INFO_ARRAY.AGREE_NO" description="协议编号" length="32" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="SIGN_INFO_ARRAY.AGREE_TYPE" description="协议类型" length="8" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="SIGN_INFO_ARRAY.AGREE_STATUS" description="协议状态" length="8" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="SIGN_INFO_ARRAY.BASIC_CREDIT_LIMIT_NO" description="基本授信额度编号" length="50" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="SIGN_INFO_ARRAY.MIS_CLIENT_NO" description="信贷客户编号" length="50" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="SIGN_INFO_ARRAY.CORE_CLIENT_NO" description="核心客户号" length="50" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="SIGN_INFO_ARRAY.CMS_CLIENT_NO_LIST" description="网银客户集合" length="50" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="SIGN_INFO_ARRAY.CLIENT_NAME" description="客户名称" length="50" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="SIGN_INFO_ARRAY.ONLINE_DISCOUNT_TOTAL_AMT" description="在线贴现总额" length="50" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="SIGN_INFO_ARRAY.USED_LIMIT_AMT" description="已用额度" length="50" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="SIGN_INFO_ARRAY.UN_USED_LIMIT_AMT" description="未用额度" length="50" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="SIGN_INFO_ARRAY.EXPIRY_DATE" description="到期日期" length="50" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="SIGN_INFO_ARRAY.BEFORE_HAND_FLAG" description="是否启用前手管理" length="2" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="SIGN_INFO_ARRAY.LOANER_ACCT_NO" description="放款账号" length="2" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="SIGN_INFO_ARRAY.LOANER_ACCT_NAME" description="放款账户名称" length="2" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="SIGN_INFO_ARRAY.ENTER_ACCT_BRANCH_NO" description="入账机构号" length="2" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="SIGN_INFO_ARRAY.ENTER_ACCT_BRANCH_NAME" description="入账机构名称" length="10" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="SIGN_INFO_ARRAY.DISCOUNT_IN_BANK_NO" description="贴入行行号" length="20" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="SIGN_INFO_ARRAY.DISCOUNT_IN_BANK_NAME" description="贴入行名称" length="20" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="SIGN_INFO_ARRAY.RATE_ADJUST_WAY" description="利率调整方式" length="20" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="SIGN_INFO_ARRAY.FLOAT_INT_RATE_VALUE" description="利率浮动值" length="20" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="SIGN_INFO_ARRAY.APP_BRANCH_NO" description="经办机构号" length="20" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="SIGN_INFO_ARRAY.APP_BRANCH_NAME" description="经办机构名称" length="20" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="SIGN_INFO_ARRAY.APPER_ID" description="经办人编号" length="20" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="SIGN_INFO_ARRAY.APPER_NAME" description="经办人名称" length="20" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="SIGN_INFO_ARRAY.OPEN_DATE" description="开通日期" length="20" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="SIGN_INFO_ARRAY.CHANGE_DATE" description="变更日期" length="20" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	
+	<!-- 前手信息    BEFORE_HAND_INFO_ARRAY -->
+	<messageElement name="SIGN_INFO_ARRAY.BEFORE_HAND_INFO_ARRAY.BEFORE_HAND_KEY" description="前手主键ID" length="20" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="SIGN_INFO_ARRAY.BEFORE_HAND_INFO_ARRAY.BEFORE_HAND_ID" description="前手编号" length="20" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="SIGN_INFO_ARRAY.BEFORE_HAND_INFO_ARRAY.BEFORE_HAND_NAME" description="前手名称" length="20" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="SIGN_INFO_ARRAY.BEFORE_HAND_INFO_ARRAY.BEFORE_HAND_TOTAL_AMT" description="前手总额" length="20" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="SIGN_INFO_ARRAY.BEFORE_HAND_INFO_ARRAY.BEFORE_HAND_USED_AMT" description="前手已用金额" length="20" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="SIGN_INFO_ARRAY.BEFORE_HAND_INFO_ARRAY.BEFORE_HAND_AVAIL_AMT" description="前手可用金额" length="20" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="SIGN_INFO_ARRAY.BEFORE_HAND_INFO_ARRAY.BEFORE_HAND_STATUS" description="前手状态" length="20" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+
+	<!-- 短信信息  AGREE_ARRAY -->
+	<messageElement name="SIGN_INFO_ARRAY.AGREE_ARRAY.SIGN_KEY" description="短信签约主键" length="20" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="SIGN_INFO_ARRAY.AGREE_ARRAY.CLIENT_TYPE" description="客户类型" length="20" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="SIGN_INFO_ARRAY.AGREE_ARRAY.MOBILE" description="手机号码" length="20" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="SIGN_INFO_ARRAY.AGREE_ARRAY.CLIENT_NAME" description="姓名" length="20" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="SIGN_INFO_ARRAY.AGREE_ARRAY.AGREE_NO" description="协议号" length="20" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="SIGN_INFO_ARRAY.AGREE_ARRAY.USER_NO" description="工号" length="20" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+
+	
+	<!-- 客户利率调整信息数组  INT_RATE_ARRAY -->
+	<messageElement name="SIGN_INFO_ARRAY.INT_RATE_ARRAY.RATE_ADJUST_KEY" description="客户利率调整主键" length="20" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="SIGN_INFO_ARRAY.INT_RATE_ARRAY.RATE_ADJUST_WAY" description="利率调整方式" length="20" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="SIGN_INFO_ARRAY.INT_RATE_ARRAY.REMAIN_EXPIRY_MONTHS" description="剩余到期月数" length="20" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="SIGN_INFO_ARRAY.INT_RATE_ARRAY.ACCEPTANCE_BANK_TYPE" description="承兑行行别" length="20" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="SIGN_INFO_ARRAY.INT_RATE_ARRAY.INT_RATE" description="利率值" length="20" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+
+</head>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class table="cd_endorsementLog" name="com.mingtech.application.ecd.domain.EndorsementLog">
+    <cache usage="read-write"/>
+    <id type="string" column="id" length="50" name="id">
+      <generator class="uuid"/>
+    </id>
+    <property name="content" type="string" column="el_content"/>
+    <property name="date" type="timestamp" column="el_date"/>
+    <property name="ownerEDraft" length="50" type="string" column="el_ownerEDraft"/>
+    <property name="ownerEDraftId" length="50" type="string" column="el_ownerEDraftId"/>
+    <property name="count" type="integer" column="el_count"/>
+    <property name="msgTpId" length="5" type="string" column="el_msgTpId"/>
+    <property name="endrsrNm" length="200" type="string" column="el_endrsrNm"/>
+    <property name="endrsrAcctSvcr" length="20" type="string" column="el_endrsrAcctSvcr"/>
+    <property name="endrsrAcctId" length="40" type="string" column="el_endrsrAcctId"/>
+    <property name="endrsrCmonId" length="20" type="string" column="el_endrsrCmonId"/>
+    <property name="endrsrRole" length="10" type="string" column="el_endrsrRole"/>
+    <property name="endrsrAgcyAcctSvcr" length="20" type="string" column="el_endrsrAgcyAcctSvcr"/>
+    <property name="endrseeNm" length="200" type="string" column="el_endrseeNm"/>
+    <property name="endrseeAcctSvcr" length="20" type="string" column="el_endrseeAcctSvcr"/>
+    <property name="endrseeCmonId" length="20" type="string" column="el_endrseeCmonId"/>
+    <property name="endrseeRole" length="10" type="string" column="el_endrseeRole"/>
+    <property name="endrseeAgcyAcctSvcr" length="20" type="string" column="el_endrseeAgcyAcctSvcr"/>
+    <property name="linkHistoryMsgId" length="50" type="string" column="el_linkHistoryMsgId"/>
+    <property name="endrseeAcctId" length="40" type="string" column="el_endrseeAcctId"/>
+    <property name="banEndrsmtMk" length="4" type="string" column="el_banEndrsmtMk"/>
+    <property name="guarnteeAdr" length="200" type="string" column="el_guarnteeAdr"/>
+    <property name="rpdOpenDt" type="date" column="el_rpdOpenDt"/>
+    <property name="rpdDueDt"  type="date" column="el_rpdDueDt"/>
+    <property name="sgnUpMk" length="4" type="string" column="el_sgnUpMk"/>
+    <property name="dshnrCd" length="4" type="string" column="el_dshnrCd"/>
+    <property name="rcrsTp" length="4" type="string" column="el_rcrsTp"/>
+    <property name="reqDate" type="date" column="el_reqDate"/>
+    <property name="processMsg041" length="10" type="string" column="el_processMsg041"/>
+    
+    <property name="endorseDate" type="timestamp" column="ENDORSE_DATE"/>
+    <property name="signInDate" type="timestamp" column="SIGN_IN_DATE"/>
+    <property name="rate" length="20" type="big_decimal" column="REDEEM_INT_RATE"/>
+    <property name="redeemAmt" length="20" type="big_decimal" column="REDEEM_AMT"/>
+    <property name="address" length="200" type="string" column="GUARANTOR_ADDRESS"/>
+    <property name="discountMode" length="2" type="string" column="DISCOUNT_MODE"/>
+    
+    <property name="beginRangeNo" length="12" type="string" column="BEGIN_RANGE_NO"/>
+    <property name="endRangeNo" length="12" type="string" column="END_RANGE_NO"/>
+    <property name="draftSource" length="6" type="string" column="DRAFT_SOURCE"/>
+    
+    
+  </class>
+</hibernate-mapping>

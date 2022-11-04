@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd"
+	default-autowire="byName" default-lazy-init="false">
+	<!-- 系统缓存更新工厂 -->
+	<bean id="systemCacheUpdateFactory"
+		class="com.mingtech.application.cache.SystemCacheUpdateFactory">
+		<property name="cacheUpdateMap">
+			<map>
+			   <entry key="01">
+			      <ref bean="systemConfigCache" />
+			   </entry>
+			   <entry key="02">
+			      <ref bean="runStateCache" />
+			   </entry>
+	            <entry key="05">
+			      <ref bean="holidayCache" />
+			   </entry>
+			   <entry key="10">
+			      <ref bean="micServiceRouteCache" />
+			   </entry>
+			   <entry key="11">
+			      <ref bean="micServiceConfigCache" />
+			   </entry>
+			   <entry key="12">
+			      <ref bean="assetTypeManageCache" />
+			   </entry>
+			</map>
+		</property>
+	</bean>
+	
+	<!-- 业务配置管理缓存-->
+	<bean id="systemConfigCache" class="com.mingtech.application.cache.SystemConfigCache" init-method="initCache" destroy-method="clearAllCache" lazy-init="false" parent="genericService">
+		<property name="startRedis" value="true" />
+	</bean>
+	
+		<!-- 系统运行状态缓存-->
+	<bean id="runStateCache" class="com.mingtech.application.cache.RunStateCache" init-method="initCache" destroy-method="clearAllCache" lazy-init="false"  parent="genericService">
+	 	<property name="startRedis" value="false" />
+	</bean>
+	
+	<!-- 节假日缓存 -->	
+	<bean id="holidayCache" class="com.mingtech.application.cache.HolidayCache" init-method="initCache" destroy-method="clearAllCache" lazy-init="false" parent="genericService">
+	    <property name="startRedis" value="true" />
+	</bean>
+	
+	<!-- 微服务配置缓存-->	
+	<bean id="micServiceConfigCache" class="com.mingtech.application.cache.MicServiceConfigCache" init-method="initCache" destroy-method="clearAllCache" lazy-init="false" parent="genericService">
+	    <property name="startRedis" value="true" />
+	</bean>
+	 <!-- 微服务路由配置缓存-->	
+	<bean id="micServiceRouteCache" class="com.mingtech.application.cache.MicServiceRouteCache" init-method="initCache" destroy-method="clearAllCache" lazy-init="false" parent="genericService">
+	    <property name="startRedis" value="true" />
+	</bean>
+	
+		 <!--资产类型管理缓存-->	
+	<bean id="assetTypeManageCache" class="com.mingtech.application.cache.AssetTypeManageCache" init-method="initCache" destroy-method="clearAllCache" lazy-init="false" parent="genericService">
+	    <property name="startRedis" value="true" />
+	</bean>
+	
+	<!-- 缓存更新服务 -->
+	<bean id="cacheUpdateService" class="com.mingtech.application.cache.service.impl.CacheUpdateServiceImpl" lazy-init="false" parent="genericService" />
+
+	 
+</beans>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class table="R_SearchResult" name="com.mingtech.application.report.domain.SearchResult">
+    <cache usage="read-write"/>
+    <id type="string" column="id" length="40" name="id">
+      <generator class="uuid"/>
+    </id>
+    <property name="idNb" length="40" type="string" column="sr_idNb"/>
+    <property name="bussinessFlowDtoId" length="40" type="string" column="sr_bussinessFlowDtoId"/>
+    <property name="drwrNm" length="180" type="string" column="sr_drwrNm"/>
+    <property name="accptrNm" length="180" type="string" column="sr_accptrNm"/>
+    <property name="isseAmt" type="big_decimal" column="sr_isseAmt"/>
+    <property name="isseDt" type="date" column="sr_isseDt"/>
+    <property name="dueDt" type="date" column="sr_dueDt"/>
+    <many-to-one name="statisticsResult" column="sr_statisticsResultId" class="com.mingtech.application.report.domain.StatisticsResult" />
+    <property name="acceptorBankCode" length="20" type="string" column="sr_acceptorBankCode"/>
+    <property name="deptId" length="40" type="string" column="sr_deptId"/>
+  </class>
+</hibernate-mapping>

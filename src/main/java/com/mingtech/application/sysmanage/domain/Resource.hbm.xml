@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class table="t_resource" name="com.mingtech.application.sysmanage.domain.Resource">
+    <cache usage="read-write"/>
+    <id type="string" column="id" length="50" name="id">
+      <generator class="uuid"/>
+    </id>
+    <property name="name" length="100" type="string" column="r_name"/>
+    <property name="desc" length="500" type="string" column="r_desc"/>
+    <property name="code" length="100" type="string" column="r_code"/>
+    <property name="type" length="8" type="int" column="r_type"/>
+    <property name="order" length="8" type="int" column="r_order"/>
+    <property name="actionName" length="500" type="string" column="r_action"/>
+    <property name="url" length="500" type="string" column="r_url"/>
+    <property name="iconCss" length="100" type="string" column="r_iconcss"/>
+    <property name="isShow" length="8" type="int" column="is_show"/>
+    <property name="sort" length="8" type="int" column="r_sort"/>
+    <property name="showName" length="100" type="string" column="show_name"/>
+    <property name="rootId" length="100" type="string" column="root_id"/>
+    <many-to-one not-null="false" column="r_pid" lazy="proxy" name="parent" class="com.mingtech.application.sysmanage.domain.Resource"/>
+     <bag table="t_role_resource" lazy="true" name="roleList">
+      <key column="resourceid"/>
+      <many-to-many column="roleId" class="com.mingtech.application.sysmanage.domain.Role"/>
+    </bag>
+  </class>
+</hibernate-mapping>

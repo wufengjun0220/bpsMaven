@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class table="T_MICSERVICE_CONFIG" name="com.mingtech.application.runmanage.domain.MicserviceConfig">
+    <cache usage="read-write" />
+	<id type="string" column="id" length="40" name="id">
+		<generator class="uuid" />
+	</id>
+	<property name="serviceName" length="40" type="string" column="SERVICE_NAME" />
+	<property name="description" length="80" type="string" column="DESCRIPTION" />
+	<property name="grayUser" length="200" type="string" column="GRAY_USER" />
+	<property name="grayUrl" length="100" type="string" column="GRAY_URL" />
+  </class>
+</hibernate-mapping>

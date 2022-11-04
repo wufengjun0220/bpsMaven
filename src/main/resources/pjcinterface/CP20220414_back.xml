@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<head>
+	<!-- SysHead -->
+	<messageElement name="SERVICE_CODE" description="服务代码" length="30" dataType="string" format="" mandatory="m" dataSource="xml" value="11003000006" type="sh"/>
+	<messageElement name="SERVICE_SCENE" description="服务应用场景" length="2" dataType="string" format="" mandatory="m" dataSource="xml" value="17" type="sh"/>
+	<messageElement name="PROVIDER_ID" description="服务系统编号" length="6" dataType="string" format="" mandatory="m" dataSource="map" value="" type="sh"/>
+	<messageElement name="CONSUMER_ID" description="请求系统编号" length="6" dataType="string" format="" mandatory="o" dataSource="xml" value="BLL001" type="sh"/>
+	<messageElement name="ORG_SYS_ID" description="发起方系统编号" length="6" dataType="string" format="" mandatory="o" dataSource="xml" value="" type="sh"/>
+	<messageElement name="BRANCH_ID" description="发送方机构ID" length="20" dataType="string" format="" mandatory="o" dataSource="map" value="" type="sh"/>
+	<messageElement name="USER_ID" description="服务请求者身份" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="sh"/>
+	<messageElement name="CONSUMER_SEQ_NO" description="服务请求发送方流水号" length="52" dataType="string" format="" mandatory="o" dataSource="map" value="" type="sh"/>
+	<messageElement name="BUSS_SEQ_NO" description="业务流水号" length="52" dataType="string" format="" mandatory="o" dataSource="xml" value="" type="sh"/>
+	<messageElement name="ESB_SEQ_NO" description="ESB产生的流水号" length="52" dataType="string" format="" mandatory="o" dataSource="xml" value="" type="sh"/>
+	<messageElement name="SERV_SEQ_NO" description="服务系统流水号" length="52" dataType="string" format="" mandatory="o" dataSource="xml" value="" type="sh"/>
+	<messageElement name="TRAN_DATE" description="发送方交易日期" length="8" dataType="string" format="" mandatory="m" dataSource="map" value="" type="sh"/>
+	<messageElement name="TRAN_TIMESTAMP" description="发送方交易时间" length="9" dataType="string" format="" mandatory="m" dataSource="map" value="" type="sh"/>
+	<messageElement name="RET_STATUS" description="交易状态" length="1" dataType="string" format="" mandatory="m" dataSource="map" value="" type="sh"/>
+	<messageElement name="RET.RET_CODE" description="交易返回代码" length="9" dataType="string" format="" mandatory="m" dataSource="map" value="" type="sh"/>
+	<messageElement name="RET.RET_MSG" description="交易返回信息" length="9" dataType="string" format="" mandatory="m" dataSource="map" value="" type="sh"/>
+	
+	<!-- FileHead -->
+	
+	<!--APP-->
+	<messageElement name="TOTAL_ROWS" description="总笔数" length="10" dataType="string" format="" mandatory="m" dataSource="map" value="" type="ah"/>
+	<messageElement name="QUERY_KEY" description="查询结果定位串" length="10" dataType="string" format="" mandatory="m" dataSource="map" value="" type="ah"/>
+	<messageElement name="TOTAL_NUM" description="本页记录总数" length="10" dataType="string" format="" mandatory="m" dataSource="map" value="" type="ah"/>
+
+	<!-- Detail -->
+	<messageElement name="INT_RATE_ARRAY.AUTH_INT_RATE_KEY" description="指导利率主键ID" length="50" dataType="string" format="" mandatory="m" dataSource="map" value="" type="db" />
+	<messageElement name="INT_RATE_ARRAY.APPROVE_BATCH_NO" description="审批批次号" length="50" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="INT_RATE_ARRAY.ACCEPTANCE_BANK_TYPE" description="承兑行行别" length="50" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="INT_RATE_ARRAY.AUTH_INT_RATE" description="机构权限利率" length="50" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="INT_RATE_ARRAY.TERM" description="期限" length="50" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="INT_RATE_ARRAY.ORG_INT_RATE_STATUS" description="机构利率状态" length="50" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+	<messageElement name="INT_RATE_ARRAY.EFFECTIVE_DATE" description="生效日期" length="50" dataType="string" format="" mandatory="o" dataSource="map" value="" type="db" />
+</head>

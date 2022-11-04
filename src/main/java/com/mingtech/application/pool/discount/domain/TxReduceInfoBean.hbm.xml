@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class table="t_review_price_reduce_info" name="com.mingtech.application.pool.discount.domain.TxReduceInfoBean" 
+  		dynamic-insert="true" dynamic-update="true">
+    <cache usage="read-write"/>
+    	<id type="string" column="id" length="50" name="id">
+      		<generator class="uuid"/>
+    	</id>
+	    <property name="batchNo" type="string" insert="false" update="false">
+	          <column name="batch_no" length="100">
+	          <comment>贴现定价审批编号</comment>
+	          </column>
+	    </property>
+	    <property name="txType" type="string">
+	          <column name="tx_type" length="10">
+	          <comment>贴现类型</comment>
+	          </column>
+	    </property>
+	    
+	     <property name="billNo" type="string">
+	          <column name="bill_no" length="50">
+	          <comment>票据包号</comment>
+	          </column>
+	    </property>
+	    <property name="bankType" type="string">
+	          <column name="bank_type" length="10">
+	          <comment>承兑行类别</comment>
+	          </column>
+	    </property>
+	    <property name="applyTxRate" type="big_decimal">
+	          <column name="apply_tx_rate" precision="4" scale="2">
+	          <comment>申请贴现利率</comment>
+	          </column>
+	    </property>
+	    <property name="applyTerm" type="string">
+	          <column name="apply_term" precision="10" scale="2">
+	          <comment>申请期限</comment>
+	          </column>
+	    </property>
+	    <property name="approveAmt" type="big_decimal">
+	          <column name="approve_Amt" precision="10" scale="2">
+	          <comment>审批额度</comment>
+	          </column>
+	    </property>
+	    <property name="currentAmt" type="big_decimal">
+	          <column name="current_amt" precision="10" scale="2">
+	          <comment>当前额度</comment>
+	          </column>
+	    </property>
+	      <property name="usedAmt" type="big_decimal">
+	          <column name="used_amt" precision="10" scale="2">
+	          <comment>已贴现额度</comment>
+	          </column>
+	    </property>
+	    <property name="aviableAmt" type="big_decimal">
+	          <column name="aviable_amt" precision="10" scale="2">
+	          <comment>未贴现额度</comment>
+	          </column>
+	    </property>
+	    <property name="reduceAmt" type="big_decimal">
+	          <column name="reduce_amt" precision="10" scale="2">
+	          <comment>已调减额度</comment>
+	          </column>
+	    </property>
+	    
+	     <property name="totalReduceAmt" type="big_decimal">
+	          <column name="total_reduce_amt" precision="10" scale="2">
+	          <comment>累计调减额度</comment>
+	          </column>
+	    </property>
+	    
+	    <property name="workerNo" type="string">
+	          <column name="worker_no" length="50">
+	          <comment>经办人工号</comment>
+	          </column>
+	    </property>
+	    <property name="workerName" type="string">
+	          <column name="worker_name" length="50">
+	          <comment>经办人</comment>
+	          </column>
+	    </property>
+	    
+	    
+	   <!--  <many-to-one name = "txReviewPriceInfo" class = "com.mingtech.application.pool.discount.domain.TxReviewPriceInfo" column = "batch_no">
+	    
+	    </many-to-one> -->
+	    
+	    <property name="lastUpdateTime" type="timestamp">
+	          <column name="LASTUPDATETIME">
+	          <comment>最近更新时间</comment>
+	          </column>
+	    </property>
+	    <property name="firstInsertTime" type="timestamp">
+	          <column name="FIRSTINSERTTIME">
+	          <comment>首次插入时间</comment>
+	          </column>
+	    </property> 
+    </class>
+</hibernate-mapping>

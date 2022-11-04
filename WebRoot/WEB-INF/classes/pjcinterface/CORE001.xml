@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<head>
+	<!-- SysHead -->
+	<messageElement name="SERVICE_CODE" description="服务代码" length="30" dataType="string" format="" mandatory="m" dataSource="xml" value="02001000002" type="sh"/>
+	<messageElement name="SERVICE_SCENE" description="服务应用场景" length="2" dataType="string" format="" mandatory="m" dataSource="xml" value="14" type="sh"/>
+	<messageElement name="CONSUMER_ID" description="请求系统编号" length="6" dataType="string" format="" mandatory="m" dataSource="xml" value="302009" type="sh"/>
+	<messageElement name="ORG_SYS_ID" description="发起方系统编号" length="6" dataType="string" format="" mandatory="o" dataSource="xml" value="1001" type="sh"/>
+	<messageElement name="TRAN_MODE" description="交易模式" length="10" dataType="string" format="" mandatory="o" dataSource="xml" value="ONLINE" type="sh"/>
+	<messageElement name="SOURCE_TYPE" description="渠道类型" length="10" dataType="string" format="" mandatory="o" dataSource="xml" value="54" type="sh"/>
+	<messageElement name="BRANCH_ID" description="发送方机构ID" length="20" dataType="string" format="" mandatory="m" dataSource="map" value="" type="sh"/>
+	<messageElement name="USER_ID" description="服务请求者身份" length="30" dataType="string" format="" mandatory="m" dataSource="map" value="" type="sh"/>
+	<messageElement name="CONSUMER_SEQ_NO" description="服务请求发送方流水号" length="52" dataType="string" format="" mandatory="m" dataSource="map" value="" type="sh"/>
+	<messageElement name="BUSS_SEQ_NO" description="业务流水号" length="52" dataType="string" format="" mandatory="o" dataSource="xml" value="" type="sh"/>
+	<messageElement name="CONSUMER_SVR_ID" description="发起方服务器标识" length="30" dataType="string" format="" mandatory="o" dataSource="xml" value="BPS0001" type="sh"/>
+	<messageElement name="WS_ID" description="终端标识" length="30" dataType="string" format="" mandatory="o" dataSource="xml" value="" type="sh"/>
+	<messageElement name="TRAN_DATE" description="发送方交易日期" length="8" dataType="string" format="" mandatory="m" dataSource="map" value="" type="sh"/>
+	<messageElement name="TRAN_TIMESTAMP" description="发送方交易时间" length="9" dataType="string" format="" mandatory="m" dataSource="map" value="" type="sh"/>
+	
+	<!-- AppHead -->
+	
+	<!-- LocalHead -->
+	
+	<!-- FileHead -->	
+	
+	<!-- Bdy -->
+	<messageElement name="LOAN_ACCT_NO" description="放款账户" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="DEDUCTION_ACCT_NO" description="扣款账号" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="LOAN_ACCT_CODE" description="放款账号款项代码" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="DEDUCTION_ACCT_CODE" description="扣款账号款项代码" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="CCY" description="币种" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="CASH_TRAN_FLAG" description="现转标识" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="START_DATE" description="开始日期" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="END_DATE" description="结束日期" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="EFFECTIVE_DATE" description="生效日期" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="PLATFORM_TRAN_DATE" description="交易日期" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="FLUCTUATION_MODE" description="正常浮动方式" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="INT_FLUCTUATION_RATE" description="正常浮动值" length="20" dataType="string" format="2" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="OUT_INT_FLUCTUATION_MODE" description="逾期利率浮动方式" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="OUT_INT_FLUCTUATION_RATE" description="逾期利率浮动值" length="20" dataType="string" format="2" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="RATE_ADJUST_WAY" description="利率调整方式" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="CONTRACT_AMT" description="合同金额" length="20" dataType="string" format="2" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="TRAN_AMT" description="交易金额" length="20" dataType="string" format="2" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="REPAY_TYPE" description="还款方式" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="IOU_NO" description="借据号" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="MGM_BRANCH_ID" description="管理机构" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="PRODUCT_NO" description="产品代码" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="REMARK" description="备注" length="300" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="COMMISSION" description="手续费" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="FEE_RATE_CODE" description="费率代码" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="COMMISSION_PAY_ACCT_NO" description="手续费付款账号" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="CLIENT_TYPE" description="客户类型" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="INT_ADJUST_TERM" description="利率调整周期" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="INTEREST_SETTLE_PERIOD" description="结息周期" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="LOAN_TYPE" description="放款方式" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="THIS_LOAN_ISSUE_FLAG" description="是否本次发放" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="IS_AUTO_REPAY" description="是否自动扣划本息" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="INER_INDEPENDENT_LOAN_FLAG" description="是否卡内自主贷款" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="FEE_STAMP_TAX_FLAG" description="是否收取印花税" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="INTE_FLAG" description="是否贴息" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="CONSIGN_LOAN_FLAG" description="是否委托贷款" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="MEMO_CODE" description="摘要码" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="FEE_CANCLE_FLAG" description="收费冲销标识" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="FEE_RATE_CODE1" description="公共费率代码1" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="FEE_AMT1" description="公共收费金额1" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="FEE_SOURSE1" description="公共收费来源 1" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="FEE_PUBLIC_TIME1" description="公共收费时间1" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="CLIENT_NO" description="客户号" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="CR_ACCT_NAME" description="贷方户名" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="DR_ACCT_NAME" description="借方户名" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="CR_ACCT_NO" description="贷方账号" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="DR_ACCT_NO" description="借款账号" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="CR_ACCT_SRC" description="贷方账户来源" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="DR_ACCT_SRC" description="借方账户来源" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="CR_AMT" description="贷方金额" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="DR_AMT" description="借方发生额" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="CR_CCY" description="贷方币种" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="DR_CCY" description="借方币种" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="THIRD_SETTLE_DATE" description="第三方清算日期" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="DEV_SEQ_NO" description="设备流水号" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="CR_CA_TT_FLAG" description="贷方钞汇标志" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="DR_CA_TT_FLAG" description="借方钞汇标志" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="FEE_CCY1" description="公共费币种1" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="FEE_ACCT_NO1" description="公共收费账号1" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="FEE_CCY2" description="公共费币种2" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="FEE_AMT2" description="公共收费金额2" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="FEE_ACCT_NO2" description="公共收费账号3" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="FEE_PAYEE_ACCT_NO" description="代扣平台手续费收款账号" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="RATE_TYPE" description="利率类型" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="INTEST_RATE_CODE" description="利率计划代码  " length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="TERM" description="期限" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="TERM_TYPE" description="期限类型" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="CCY" description="币种" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="BUYER_INTEREST_ACCT_NO" description="买方付息账号" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="BPS_DEPOSIT_ACCT_NO" description="保证金账户 " length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="ROPE_AMT" description="圈存金额" length="20" dataType="string" format="2" mandatory="o" dataSource="map" value="" type="mb" />
+	<messageElement name="CONTRACT_NO" description="合同号" length="30" dataType="string" format="" mandatory="o" dataSource="map" value="" type="mb" />
+	
+	
+</head>

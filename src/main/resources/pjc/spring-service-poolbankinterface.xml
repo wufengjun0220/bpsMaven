@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd"
+	default-autowire="byName" default-lazy-init="false">
+	
+	<!--使用MINA实现的网银服务器端票据池  -->
+	<bean id="netbankServer"
+		class="com.mingtech.application.pool.bank.netbanksys.MinaServerHKB"
+		init-method="start" destroy-method="stop">
+		<property name="port" value="6001" />
+		<property name="serverName" value="票据池接口服务" />
+		<property name="handlers">
+			<map>
+				<entry key="PJC001" value-ref="PJC001RequestHandler" />
+				<entry key="PJC002" value-ref="PJC002RequestHandler" />
+				<entry key="PJC005" value-ref="PJC005RequestHandler" />
+				<entry key="PJC007" value-ref="PJC007RequestHandler" />
+				<entry key="PJC009" value-ref="PJC009RequestHandler" />
+				<entry key="PJC010" value-ref="PJC010RequestHandler" />
+				<entry key="PJC011" value-ref="PJC011RequestHandler" />
+				<entry key="PJC015" value-ref="PJC015RequestHandler" />
+				<entry key="PJC016" value-ref="PJC016RequestHandler" />
+				<entry key="PJC017" value-ref="PJC017RequestHandler" />
+				<entry key="PJC018" value-ref="PJC018RequestHandler" />
+				<entry key="PJC019" value-ref="PJC019RequestHandler" />
+				<entry key="PJC020" value-ref="PJC020RequestHandler" />
+				<entry key="PJC022" value-ref="PJC022RequestHandler" />
+				<entry key="PJC023" value-ref="PJC023RequestHandler" />
+				<entry key="PJC024" value-ref="PJC024RequestHandler" />
+                <entry key="PJC027" value-ref="PJC027RequestHandler" />
+				<entry key="PJC032" value-ref="PJC032RequestHandler" />
+				<entry key="PJC033" value-ref="PJC033RequestHandler" />
+				<entry key="PJC034" value-ref="PJC034RequestHandler" />
+				<entry key="PJC035" value-ref="PJC035RequestHandler" />
+				<entry key="PJC036" value-ref="PJC036RequestHandler" />
+				<entry key="PJC037" value-ref="PJC037RequestHandler" />
+				<entry key="PJC038" value-ref="PJC038RequestHandler" />
+				<entry key="PJC039" value-ref="PJC039RequestHandler" />
+				<entry key="PJC040" value-ref="PJC040RequestHandler" />
+				<entry key="PJC041" value-ref="PJC041RequestHandler" />
+				<entry key="PJC042" value-ref="PJC042RequestHandler" />
+				<entry key="PJC043" value-ref="PJC043RequestHandler" />
+				<entry key="PJC044" value-ref="PJC044RequestHandler" />
+				<entry key="PJC045" value-ref="PJC045RequestHandler" />
+				<entry key="PJC046" value-ref="PJC046RequestHandler" />
+				<entry key="PJC047" value-ref="PJC047RequestHandler" />
+				<entry key="PJC048" value-ref="PJC048RequestHandler" />
+				<entry key="PJC049" value-ref="PJC049RequestHandler" />
+				<entry key="PJC052" value-ref="PJC052RequestHandler" />
+				<entry key="PJC053" value-ref="PJC053RequestHandler" />
+				<entry key="PJC054" value-ref="PJC054RequestHandler" />
+				<entry key="PJC055" value-ref="PJC055RequestHandler" />
+				<entry key="PJC056" value-ref="PJC056RequestHandler" />
+				<entry key="PJC057" value-ref="PJC057RequestHandler" />
+				<entry key="PJC058" value-ref="PJC058RequestHandler" />
+				<entry key="PJC059" value-ref="PJC059RequestHandler" />
+				<entry key="PJC060" value-ref="PJC060RequestHandler" />
+				<entry key="PJC061" value-ref="PJC061RequestHandler" />
+				<entry key="PJC062" value-ref="PJC062RequestHandler" />
+				<entry key="PJC063" value-ref="PJC063RequestHandler" />
+				<entry key="PJC064" value-ref="PJC064RequestHandler" />
+				<entry key="PJC065" value-ref="PJC065RequestHandler" />
+				<entry key="PJC066" value-ref="PJC066RequestHandler" />
+				<entry key="PJC067" value-ref="PJC067RequestHandler" />
+				<entry key="PJC068" value-ref="PJC068RequestHandler" />
+				<entry key="PJC069" value-ref="PJC069RequestHandler" />
+				<entry key="PJC070" value-ref="PJC070RequestHandler" />
+				<entry key="PJC071" value-ref="PJC071RequestHandler" />
+				<entry key="PJC072" value-ref="PJC072RequestHandler" />
+				<entry key="PJC073" value-ref="PJC073RequestHandler" />
+				<entry key="PJC074" value-ref="PJC074RequestHandler" />
+				
+                <!--  bbsp服务-->
+				<entry key="BBSP001" value-ref="BBSP001RequestHandler" />
+
+				<!--  信贷服务 -->
+				<entry key="PJE000" value-ref="PJE000RequestHandler" />
+				<entry key="PJE001" value-ref="PJE001RequestHandler" />
+				<entry key="PJE002" value-ref="PJE002RequestHandler" />
+				<entry key="PJE003" value-ref="PJE003RequestHandler" />
+				<entry key="PJE005" value-ref="PJE005RequestHandler" />
+				<entry key="PJE007" value-ref="PJE007RequestHandler" />
+				<entry key="PJE008" value-ref="PJE008RequestHandler" />
+				<entry key="PJE009" value-ref="PJE009RequestHandler" />
+				<entry key="PJE010" value-ref="PJE010RequestHandler" />
+				<entry key="PJE014" value-ref="PJE014RequestHandler" />
+				<entry key="PJE015" value-ref="PJE015RequestHandler" />
+				<entry key="PJE016" value-ref="PJE016RequestHandler" />
+				<entry key="PJE017" value-ref="PJE017RequestHandler" />
+				<entry key="PJE018" value-ref="PJE018RequestHandler" />
+				<entry key="PJE026" value-ref="PJE026RequestHandler" />
+				
+				<!--  柜面服务 -->
+				<entry key="GM000" value-ref="GM000CounterHandler" />
+				<entry key="GM001" value-ref="GM001CounterHandler" />
+				<entry key="GM002" value-ref="GM002CounterHandler" />
+				<entry key="GM003" value-ref="GM003CounterHandler" />
+				<entry key="GM005" value-ref="GM005CounterHandler" />
+				<entry key="GM006" value-ref="GM006CounterHandler" />
+				<entry key="GM007" value-ref="GM007CounterHandler" />
+				<entry key="GM008" value-ref="GM008CounterHandler" />
+	 		</map>
+		</property>		
+	</bean>
+	
+	<bean id="PJC001RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC001RequestHandler" />
+	<bean id="PJC002RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC002RequestHandler" /> 
+	<bean id="PJC005RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC005RequestHandler" />
+	<bean id="PJC007RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC007RequestHandler" />
+	<bean id="PJC009RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC009RequestHandler" />
+	<bean id="PJC010RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC010RequestHandler" />
+	<bean id="PJC011RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC011RequestHandler" />
+	<bean id="PJC015RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC015RequestHandler" />
+	<bean id="PJC016RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC016RequestHandler" />
+	<bean id="PJC017RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC017RequestHandler" />
+	<bean id="PJC018RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC018RequestHandler" />
+	<bean id="PJC019RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC019RequestHandler" />
+	<bean id="PJC020RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC020RequestHandler" />
+	<bean id="PJC022RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC022RequestHandler" />
+	<bean id="PJC023RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC023RequestHandler" />
+	<bean id="PJC024RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC024RequestHandler" />
+    <bean id="PJC027RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC027RequestHandler" />
+	<bean id="PJC032RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC032RequestHandler" />
+	<bean id="PJC033RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC033RequestHandler" />
+	<bean id="PJC034RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC034RequestHandler" />
+	<bean id="PJC035RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC035RequestHandler" />
+	<bean id="PJC036RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC036RequestHandler" />
+	<bean id="PJC037RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC037RequestHandler" />
+	<bean id="PJC038RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC038RequestHandler" />
+	<bean id="PJC039RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC039RequestHandler" />
+	<bean id="PJC040RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC040RequestHandler" />
+	<bean id="PJC041RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC041RequestHandler" />
+	<bean id="PJC042RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC042RequestHandler" />
+	<bean id="PJC043RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC043RequestHandler" />
+	<bean id="PJC044RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC044RequestHandler" />
+	<bean id="PJC045RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC045RequestHandler" />
+	<bean id="PJC046RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC046RequestHandler" />
+	<bean id="PJC047RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC047RequestHandler" />
+	<bean id="PJC048RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC048RequestHandler" />
+	<bean id="PJC049RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC049RequestHandler" />
+	<bean id="PJC050RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC050RequestHandler" />
+	<bean id="PJC051RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC051RequestHandler" />
+	<bean id="PJC052RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC052RequestHandler" />
+	<bean id="PJC053RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC053RequestHandler" />
+	<bean id="PJC054RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC054RequestHandler" />
+	<bean id="PJC055RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC055RequestHandler" />
+	<bean id="PJC056RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC056RequestHandler" />
+	<bean id="PJC057RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC057RequestHandler" />
+	<bean id="PJC058RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC058RequestHandler" />
+	<bean id="PJC059RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC059RequestHandler" />
+	<bean id="PJC060RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC060RequestHandler" />
+	<bean id="PJC061RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC061RequestHandler" />
+	<bean id="PJC062RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC062RequestHandler" />
+	<bean id="PJC063RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC063RequestHandler" />
+	<bean id="PJC064RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC064RequestHandler" />
+	<bean id="PJC065RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC065RequestHandler" />
+	<bean id="PJC066RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC066RequestHandler" />
+	<bean id="PJC067RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC067RequestHandler" />
+	<bean id="PJC068RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC068RequestHandler" />
+	<bean id="PJC069RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC069RequestHandler" />
+	<bean id="PJC070RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC070RequestHandler" />
+	<bean id="PJC071RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC071RequestHandler" />
+	<bean id="PJC072RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC072RequestHandler" />
+	<bean id="PJC073RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC073RequestHandler" />
+	<bean id="PJC074RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.PJC074RequestHandler" />
+	<bean id="BBSP001RequestHandler" class="com.mingtech.application.pool.bank.netbanksys.handler.BBSP001RequestHandler" />
+
+ 	<!--使用MINA实现的信贷服务器端票据池  -->
+ 	<!-- ESB对接一个端口，暂时注释掉
+	<bean id="creditServer"
+		class="com.mingtech.application.pool.bank.creditsys.MinaCreditServer"
+		init-method="start" destroy-method="stop">
+		<property name="port" value="6002" />
+		<property name="serverName" value="票据池信贷服务" />
+		<property name="handlers">
+			<map>
+				<entry key="PJE000" value-ref="PJE000RequestHandler" />
+				<entry key="PJE001" value-ref="PJE001RequestHandler" />
+				<entry key="PJE002" value-ref="PJE002RequestHandler" />
+				<entry key="PJE003" value-ref="PJE003RequestHandler" />
+				<entry key="PJE005" value-ref="PJE005RequestHandler" />
+			</map>
+		</property>		
+	</bean>
+	 -->
+	<bean id="PJE000RequestHandler" class="com.mingtech.application.pool.bank.creditsys.handler.PJE000CreditHandler" />
+	<bean id="PJE001RequestHandler" class="com.mingtech.application.pool.bank.creditsys.handler.PJE001CreditHandler" />
+	<bean id="PJE002RequestHandler" class="com.mingtech.application.pool.bank.creditsys.handler.PJE002CreditHandler" />
+	<bean id="PJE003RequestHandler" class="com.mingtech.application.pool.bank.creditsys.handler.PJE003CreditHandler" />
+	<bean id="PJE005RequestHandler" class="com.mingtech.application.pool.bank.creditsys.handler.PJE005CreditHandler" />
+	<bean id="PJE007RequestHandler" class="com.mingtech.application.pool.bank.creditsys.handler.PJE007CreditHandler" />
+	<bean id="PJE008RequestHandler" class="com.mingtech.application.pool.bank.creditsys.handler.PJE008CreditHandler" />
+	<bean id="PJE009RequestHandler" class="com.mingtech.application.pool.bank.creditsys.handler.PJE009CreditHandler" />
+	<bean id="PJE010RequestHandler" class="com.mingtech.application.pool.bank.creditsys.handler.PJE010CreditHandler" />
+	<bean id="PJE014RequestHandler" class="com.mingtech.application.pool.bank.creditsys.handler.PJE014CreditHandler" />
+	<bean id="PJE015RequestHandler" class="com.mingtech.application.pool.bank.creditsys.handler.PJE015CreditHandler" />
+	<bean id="PJE016RequestHandler" class="com.mingtech.application.pool.bank.creditsys.handler.PJE016CreditHandler" />
+	<bean id="PJE017RequestHandler" class="com.mingtech.application.pool.bank.creditsys.handler.PJE017CreditHandler" />
+	<bean id="PJE018RequestHandler" class="com.mingtech.application.pool.bank.creditsys.handler.PJE018CreditHandler" />
+	<bean id="PJE026RequestHandler" class="com.mingtech.application.pool.bank.creditsys.handler.PJE026CreditHandler" />
+	
+	 <!--使用MINA实现的柜面服务器端票据池  -->
+	 <!-- ESB对接一个端口，暂时注释掉
+	<bean id="counterServer"
+		class="com.mingtech.application.pool.bank.creditsys.MinaCreditServer"
+		init-method="start" destroy-method="stop">
+		<property name="port" value="6003" />
+		<property name="serverName" value="票据池柜面服务" />
+		<property name="handlers">
+			<map>
+				<entry key="GM000" value-ref="GM000CounterHandler" />
+				<entry key="GM001" value-ref="GM001CounterHandler" />
+			</map>
+		</property>		
+	</bean>
+	-->
+	<bean id="GM000CounterHandler" class="com.mingtech.application.pool.bank.countersys.handler.GM000CounterHandler" />
+	<bean id="GM001CounterHandler" class="com.mingtech.application.pool.bank.countersys.handler.GM001CounterHandler" />
+	<bean id="GM002CounterHandler" class="com.mingtech.application.pool.bank.countersys.handler.GM002CounterHandler" />
+	<bean id="GM003CounterHandler" class="com.mingtech.application.pool.bank.countersys.handler.GM003CounterHandler" />
+	<bean id="GM005CounterHandler" class="com.mingtech.application.pool.bank.countersys.handler.GM005CounterHandler" />
+	<bean id="GM006CounterHandler" class="com.mingtech.application.pool.bank.countersys.handler.GM006CounterHandler" />
+	<bean id="GM007CounterHandler" class="com.mingtech.application.pool.bank.countersys.handler.GM007CounterHandler" />
+	<bean id="GM008CounterHandler" class="com.mingtech.application.pool.bank.countersys.handler.GM008CounterHandler" />
+	
+	<!--使用SOCKET实现的电票系统客户端-->
+	<bean id="ecdsClient"
+		class="com.mingtech.application.pool.bank.bbsp.client.DefaultEcdsClient"
+		scope="prototype">
+		<!--新接口的接收方IP  -->
+		<property name="ip" value="127.0.0.1" />
+		<!--新接口的接收方端口  -->
+		<property name="port" value="39351" />
+		<property name="timeout" value="300000" />
+	</bean>
+	<!--使用SOCKET实现的核心系统客户端-->
+	<bean id="coreClient"
+		class="com.mingtech.application.pool.bank.coresys.DefaultCoreClient"
+		scope="prototype">
+		<!--新接口的接收方IP  -->
+		<property name="ip" value="200.0.1.55" />
+		<!--新接口的接收方端口  -->
+		<property name="port" value="39351" />
+		<property name="timeout" value="300000" />
+	</bean>
+	
+	<bean id="misClient"
+		class="com.mingtech.application.pool.bank.creditsys.client.DefaultMisClient"
+		scope="prototype">
+		<!--新接口的接收方IP  -->
+		<property name="ip" value="200.0.1.55" />
+		<!--新接口的接收方端口  -->
+		<property name="port" value="39351" />
+		<property name="timeout" value="300000" />
+	</bean>
+	
+	<!-- 中台系统配置信息 -->
+	<bean id="centerPlatformClient"
+		class="com.mingtech.application.pool.discount.client.DefaultCenterPlatform"
+		scope="prototype">
+		<!--新接口的接收方IP  -->
+		<property name="ip" value="127.0.0.1" />
+		<!--新接口的接收方端口  -->
+		<property name="port" value="39351" />
+		<property name="timeout" value="300000" />
+	</bean>
+
+</beans>

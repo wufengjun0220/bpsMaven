@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 接口名称与业务编号对应 -->
+<head>
+	
+	<!-- 票据池系统(name)发给BBSP(value)，票据系统作为客户端 -->
+	<!-- 30600071、30610001、BBSP009、BBSP003、BBSP004、BBSP006、30020007、30020801、30610002 -->
+	<code name="11002000051|08" value="30600071" text="票据质押/解质押/汇票撤票/出票登记/提示承兑/提示收票/撤票/背书/贴现/等申请接口"/>
+	<code name="11003000051|13" value="30610004" text="查询持有票据信息" />
+	<code name="11003000051|09" value="30600096" text="查询票据背面信息" />
+	<code name="11003000051|08" value="30600105" text="查询票据正面信息" />
+	<!-- 30610003、30600104、BBSP010 -->
+	<code name="11003000051|11" value="30610003" text="查询质押/解质押待签收的票据" />
+	<code name="11003000051|21" value="30610005" text="查询全量票据信息" />
+	<code name="11002000051|09" value="30600122" text="统一撤销申请" />
+	<code name="11002000051|12" value="30600123" text="统一签收、拒绝" />
+	<code name="11003000051|14" value="30610006" text="电子票据交易类查询(批量文件)" />
+	<code name="03002000002|07" value="30020207" text="票据池贴现锁票接口" />
+	<code name="11002000051|16" value="11025116" text="经办锁票接口" />
+	<code name="11002000044|09" value="30020802" text="贴现签收及记账接口" />
+	<code name="11003000051|22" value="30031802" text="强制贴现结果查询接口即mis同步人行交易接口" />
+	<code name="11002000051|10" value="BBSP002" text="批量新增票据信息" />
+	<code name="11002000044|08" value="BBSP005" text="提示承兑签收" />
+	<code name="11003000021|24" value="BBSP007" text="记账查证" />
+	<code name="11002000051|11" value="BBSP008" text="删除电子商业汇票" />
+	<code name="11003000051|23" value="30610007" text="查询子票区间" />
+	<code name="03002000006|01" value="30610002" text="提示付款申请" />
+	<code name="11003000051|29" value="11035129" text="持票id查询" />
+	<code name="03003000003|37" value="03030337" text="老票票据交易类查询(批量文件)" />
+	<code name="03001000008|10" value="03010810" text="老票统一撤销申请" />
+	<code name="11001000015|02" value="11011502" text="承兑出账撤销申请" />
+	
+	
+	<!-- BBSP(name)发给票据池系统(value)，票据系统作为服务端 -->
+	<code name="11002000013|35" value="BBSP001" text="通用结果通知"/>
+
+	
+	<!-- 票据池系统(name)发给LPR(value)，票据池系统作为客户端 -->
+	<code name="11003000006|12" value="LPS001" text="利率查询" />
+	
+		
+	<!-- 票据池系统(name)发给短信平台(value)，票据池系统作为客户端 -->
+	<code name="11002000013|12" value="MESS001" text="短信消息通知"/>
+	
+	<!-- 票据池系统(name)发给智汇宝(value)，票据池系统作为客户端 -->
+	<code name="11001000003|33" value="ZHS001" text="智汇宝转账录入" />
+	<code name="11003000008|03" value="ZHS002" text="智汇宝平台转账明细查询" />
+	 
+	 
+
+	<!-- 票据池系统(name)发给核心系统(value)，票据系统作为客户端 -->
+	<code name="11003000001|48" value="854111" text="854111-客户名称查询"/>
+	<code name="11003000002|32" value="716040" text="716040-保证金余额查询" />
+	<code name="03001000011|08" value="580314" text="580314-电票质押记账"/>
+	<code name="03001000011|09" value="580316" text="580316-电票解质押记账" />
+	<code name="03001000011|06" value="580311" text="580311-电票托收回款记账"/>
+	<code name="11003000008|01" value="584141" text="584141-保证金交易查询"/>
+	<code name="02003000001|18" value="126012" text="126012-借据还款信息查询"/>
+	<code name="11001000003|42" value="580280" text="580280-纸票入池/出池记账"/>
+	<code name="11001000003|14" value="580062" text="580060-资金划转"/>
+	<code name="11001000003|39" value="999002" text="999002-票据池服务费记账"/>
+	<code name="02001000002|14" value="CORE001" text="125039-放款申请"/>
+	<code name="11003000021|03" value="CORE002" text="590171-核心记账流水查证"/>
+	<code name="02001000001|06" value="CORE003" text="125029-提前还款（含解圈）"/>
+	<code name="11002000003|23" value="CORE006" text="580229-预存保证金账户开立"/>
+	<code name="11001000001|17" value="CORE007" text="582270-圈存"/>
+	<code name="11001000001|16" value="CORE008" text="582275-解圈存"/>
+	<code name="02001000001|05" value="CORE009" text="125028-贷款归还（含解圈）"/>
+	<code name="11002000004|20" value="CORE010" text="582380-票据池保证金账户变更"/>
+	<code name="11003000006|02" value="CORE011" text="584200-核心利率查询"/>
+	
+	
+	<!-- 核心前端柜面(name)发给票据池系统(value)，票据系统作为服务端 -->
+	<code name="11002000012|18" value="GM000" text="保证金销户校验" />
+	<code name="11002000012|19" value="GM001" text="保证金手动还款校验"/>
+	<code name="11003000007|33" value="GM002" text="客户票据池签约信息查询" />
+	<code name="02001000006|12" value="GM003" text="风险及额度校验"/>
+	<code name="11002000051|02" value="GM005" text="纸票入池申请 " />
+	<code name="03003000003|54" value="GM006" text="票据池票据及预约取票信息查询"/>
+	<code name="11002000051|03" value="GM007" text="纸票出池申请" />
+	<code name="03003000007|10" value="GM008" text="票据池服预约取票批次接口"/>
+
+	
+	
+	<!-- 信贷系统(name)发给票据池系统(value)，票据系统作为服务端 -->
+	<code name="11002000013|25" value="PJE000" text="担保合同信息推送" />
+	<code name="02001000006|07" value="PJE001" text="票据池额度校验" />
+	<code name="02001000006|08" value="PJE002" text="票据池额度占用" />
+	<code name="02001000006|09" value="PJE003" text="票据池额度释放" />
+	<code name="11003000007|29" value="PJE005" text="票据池签约信息查询" />
+	<code name="03003000003|52" value="PJE007" text="在池票据查询接口" />
+	<code name="03002000002|09" value="PJE008" text="加锁/解锁" />
+	<code name="03002000008|04" value="PJE009" text="强制贴现申请" />
+	<code name="03003000003|53" value="PJE010" text="贴现结果查询接口" />
+    <code name="02003000002|17" value="PJE011" text="商票保贴/银票额度查询"/>
+	<code name="02001000006|18" value="PJE012" text="额度系统额度占用"/>
+	<code name="02001000006|19" value="PJE013" text="额度系统额度释放"/>
+	<code name="03002000030|01" value="PJE014" text="在线银承推送" />
+	<code name="03003000004|07" value="PJE015" text="在线银承协议信息查询" />
+	<code name="03002000030|02" value="PJE016" text="在线流贷协议推送" />
+	<code name="03003000004|08" value="PJE017" text="在线流贷协议信息查询" />
+	<code name="11002000061|01" value="PJE018" text="票据池模式变更" />
+	<code name="02001000006|27" value="PJE021" text="风险探测（含额度校验/占用）" />
+	<code name="02003000002|19" value="PJE022" text="额度系统-额度查询" />
+	<code name="02001000006|29" value="PJE023" text="额度系统-额度占用" />
+	<code name="11002000028|07" value="PJE024" text="MIS-承兑行高低风险会员信息同步" />
+	<code name="02003000002|13" value="PJE025" text="额度系统-保贴信息查询" />
+	<code name="11002000012|36" value="PJE026" text="在线贴现经办人校验" />
+	<code name="02001000006|36" value="PJE027" text="额度占用大票换小票" />
+	<code name="11001000014|02" value="PJE028" text="在线银承、流贷合同金额变更" />
+
+	
+	<!-- 网银系统(name)发给票据池系统(value)，票据系统作为服务端 -->
+	<code name="11003000049|02" value="PJC001" text="出入池待处理列表查询"/>
+	<code name="11002000051|01" value="PJC002" text="入池申请/出池申请接口"/>
+	<code name="03003000003|41" value="PJC005" text="池票据查询接口"/>
+	<code name="02003000002|10" value="PJC007" text="池额度汇总查询接口"/>
+	<code name="03003000003|42" value="PJC009" text="信贷产品查询接口"/>
+	<code name="11002000006|38" value="PJC010" text="签约管理接口"/>
+	<code name="03003000003|43" value="PJC011" text="签约查询接口"/>
+	<code name="11003000049|03" value="PJC015" text="待办明细查询接口"/>
+	<code name="03003000003|44" value="PJC016" text="票样查询-正面查询接口"/>
+	<code name="03003000003|45" value="PJC017" text="票样查询-反面查询接口"/>
+	<code name="11002000021|10" value="PJC018" text="风险管理-名单查询接口"/>
+	<code name="11002000021|09" value="PJC019" text="风险管理-名单登记接口"/>
+	<code name="11003000002|43" value="PJC020" text="保证金账号查询接口"/>
+	<code name="11003000002|44" value="PJC022" text="保证金余额查询接口"/>
+	<code name="11003000002|45" value="PJC023" text="保证金明细查询接口"/>
+	<code name="03002000002|08" value="PJC024" text="票据信息登记接口"/>
+	<code name="03003000003|47" value="PJC027" text="全量票据汇总查询接口"/>
+    <code name="03003000003|46" value="PJC032" text="全量信息查询"/>
+    <code name="11002000006|42" value="PJC033" text="单户票据池签约"/>
+    <code name="11002000006|43" value="PJC034" text="集团票据池签约"/>
+    <code name="11002000026|09" value="PJC035" text="对账结果推送接口"/>
+    <code name="11001000003|40" value="PJC036" text="保证金划转（存取）接口"/>
+    <code name="11002000051|04" value="PJC037" text="出池后续操作信息录入接口"/>
+    <code name="02001000006|13" value="PJC038" text="集团成员额度分配"/>
+    <code name="11003000001|59" value="PJC039" text="集团成员融资信息查询"/>
+    <code name="11001000003|41" value="PJC040" text="票据池服务费收取"/>
+    <code name="03002000002|10" value="PJC041" text="票据池票据批量加锁"/>
+    <code name="11003000054|01" value="PJC042" text="票据池服务费收费标准查询 "/>
+    <code name="11003000001|60" value="PJC043" text="客户经理信息查询"/>
+    <code name="11002000051|05" value="PJC044" text="纸票出池申请(经办)"/>
+    <code name="11003000037|05" value="PJC045" text="票据池对账信息查询"/>
+	<code name="03003000007|08" value="PJC046" text="票据池纸票出池申请批次信息查询"/>
+	<code name="03003000007|09" value="PJC047" text="票据池纸票出池申请明细信息查询"/>
+	<code name="11003000001|61" value="PJC048" text="票据池客户签约信息查询"/>
+	<code name="11003000054|02" value="PJC049" text="票据池服务费收费查询"/>
+	<code name="11003000001|94" value="PJC052" text="收票人信息查询"/>
+	<code name="11003000001|95" value="PJC053" text="收款人信息查询"/>
+	<code name="11002000006|54" value="PJC054" text="在线业务短信收件人信息维护"/>
+	<code name="11003000001|96" value="PJC055" text="在线业务短信收件人信息查询"/>
+	<code name="03001000008|12" value="PJC056" text="在线银承业务申请"/>
+	<code name="11002000036|06" value="PJC057" text="融资测算"/>
+	<code name="02003000002|15" value="PJC058" text="票据池低风险额度明细查询"/>
+	<code name="03003000021|01" value="PJC059" text="在线流贷资金支付计划查询"/>
+	<code name="03002000031|01" value="PJC060" text="在线流贷受托支付付款申请"/>
+	<code name="03002000031|02" value="PJC061" text="在线流贷受托支付支付计划修改"/>
+	<code name="03002000031|03" value="PJC062" text="在线流贷受托支付支付计划取消"/>
+	<code name="03003000004|05" value="PJC063" text="在线业务查询"/>
+	<code name="03003000004|06" value="PJC064" text="在线银承业务跟踪查询"/>
+	<code name="03002000032|01" value="PJC065" text="在线业务合同状态同步"/>
+	<code name="03002000032|02" value="PJC066" text="在线银承借据信息同步"/>
+	<code name="03003000007|11" value="PJC067" text="票据池出入流水查询"/>
+	<code name="11003000001|97" value="PJC068" text="资产实点明细查询"/>
+	<code name="03003000003|58" value="PJC069" text="时点票据详情明细查询"/>
+	<code name="02003000002|16" value="PJC070" text="票据池额度查询"/>
+	<code name="03001000008|13" value="PJC071" text="在线流贷业务申请"/>
+	<code name="11002000012|29" value="PJC072" text="票据出池校验"/>
+	
+	
+	<code name="03003000023|07" value="PJC073" text="机构在线业务开关"/>
+	<code name="11003000070|06" value="PJC074" text="在线协议禁入名单客户查询"/>
+	<!-- 票据池系统(name)发给中台系统(value)，票据系统作为客户端 -->
+	
+	
+	
+	
+	<code name="11003000006|19" value="CP20220401" text="最优惠利率查询"/>
+	<code name="11003000007|55" value="CP20220402" text="秒贴协议变更历史详情查询"/>
+	<code name="11003000007|54" value="CP20220403" text="秒贴协议变更历史列表查询"/>
+	<code name="02003000002|20" value="CP20220404" text="额度审价信息查询"/>
+	<code name="02001000006|38" value="CP2022040501" text="额度审价信息设置模式一"/>
+	<code name="02001000006|38" value="CP2022040502" text="额度审价信息设置模式二"/>
+	<code name="11003000007|53" value="CP20220406" text="秒贴协议列表查询"/>
+	<code name="11002000028|08" value="CP20220407" text="承兑行总行信息设置"/>
+	<code name="11003000005|13" value="CP20220408" text="承兑行总行信息查询"/>
+	<code name="11002000051|14" value="CP20220409" text="票据审价信息维护"/>
+	<code name="11003000051|26" value="CP20220410" text="票据审价信息查询" />
+	<code name="11002000066|03" value="CP20220411" text="最优惠利率维护"/>
+	<code name="11002000066|02" value="CP20220412" text="机构权限利率（优惠利率）维护"/>
+	<code name="11002000066|01" value="CP20220413" text="指导利率维护"/>
+	<code name="11003000006|17" value="CP20220414" text="审批权限利率查询" />
+	<code name="11003000006|16" value="CP20220415" text="已生效的指导利率查询" />
+	<code name="11003000006|15" value="CP20220416" text="指导利率查询" />
+	<code name="11002000068|01" value="CP20220417" text="贴现票据校验规则维护" />
+	<code name="11003000072|01" value="CP20220418" text="贴现票据校验规则查询" />
+	<code name="11002000021|18" value="CP20220419" text="出票人黑名单设置" />
+	<code name="11003000070|03" value="CP20220420" text="出票人黑名单信息查询" />
+	<code name="11002000021|17" value="CP20220421" text="承兑行黑名单设置" />
+	<code name="11003000070|02" value="CP20220422" text="承兑行黑名单信息查询" />
+	<code name="11003000072|04" value="CP20220423" text="贴现票据校验规则查询" />
+	<code name="11002000068|04" value="CP20220424" text="客户在线运营规则维护" />
+	<code name="11003000072|03" value="CP20220425" text="机构在线运营规则查询" />
+	<code name="11002000068|03" value="CP20220426" text="机构在线运营规则维护" />
+	<code name="11003000072|02" value="CP20220427" text="系统级运营规则查询" />
+	<code name="11002000068|02" value="CP20220428" text="系统级运营规则维护" />
+	<code name="11003000057|09" value="CP20220429" text="在线贴现申请列表查询" />
+	<code name="11003000057|10" value="CP20220430" text="在线贴现申请明细列表查询" />
+	<code name="11003000006|18" value="CP20220431" text="在线贴现实际利率查询" />
+	<code name="11002000072|01" value="CP20220432" text="中断业务处理" />
+	
+</head>

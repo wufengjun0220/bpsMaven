@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class table="t_role" name="com.mingtech.application.sysmanage.domain.Role">
+    <id type="string" column="id" length="50" name="id">
+      <generator class="uuid"/>
+    </id>
+    <property name="name" length="100" type="string" column="r_name"/>
+    <property name="description" length="300" type="string" column="r_desc"/>
+    <property name="createTime" type="timestamp" column="r_time"/>
+    <bag table="t_role_resource" lazy="false" inverse="false" cascade="save-update" name="resourceList">
+      <key column="roleId"/>
+      <many-to-many column="resourceId" class="com.mingtech.application.sysmanage.domain.Resource"/>
+    </bag>
+    <property name="scope" length="50" type="string" column="r_scope"/>
+    <property name="amount" type="big_decimal">
+    	<column name="r_amount" precision="20" scale="2"></column>
+    </property>
+    <property name="productType" type="string">
+    	<column name="r_product_type" length="50"></column>
+    </property>
+    
+    <property name="code" type="string">
+    	<column name="r_code" length="50"></column>
+    </property>
+    <property name="memberCode" type="string">
+      <column name="R_MEMBER_CODE" length="10"></column>
+    </property>
+  </class>
+</hibernate-mapping>

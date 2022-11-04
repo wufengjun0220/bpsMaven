@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class table="T_RATE_MAINTAININFO" name="com.mingtech.application.pool.discount.domain.TxRateMaintainInfo" 
+  		dynamic-insert="true" dynamic-update="true">
+    <cache usage="read-write"/>
+	    <id type="string" column="id" length="50" name="id">
+	      <generator class="uuid"/>
+	    </id>
+	    <property name="batchNo" type="string">
+	          <column name="BATCHNO" length="20">
+	          <comment>批次号</comment>
+	          </column>
+	    </property>
+	    <property name="effState" type="string">
+	          <column name="EFFSTATE" length="5">
+	          <comment>生效状态</comment>
+	          </column>
+	    </property>
+	    <property name="maintainTime" type="string">
+	          <column name="MAINTAINTIME" length="10">
+	          <comment>维护日期</comment>
+	          </column>
+	    </property>
+	    <property name="effTime" type="string">
+	          <column name="EFFTIME" length="10">
+	          <comment>生效时间</comment>
+	          </column>
+	    </property>
+	    <property name="handler" type="string">
+	          <column name="HANDLER" length="200">
+	          <comment>经办人</comment>
+	          </column>
+	    </property>
+	    <property name="handlerNo" type="string">
+	          <column name="HANDLERNO" length="50">
+	          <comment>经办人工号</comment>
+	          </column>
+	    </property>
+	      <property name="reviewer" type="string">
+	          <column name="REVIEWER" length="200">
+	          <comment>复核人</comment>
+	          </column>
+	    </property>
+	    <property name="reviewerNo" type="string">
+	          <column name="REVIEWERNO" length="50">
+	          <comment>复核人工号</comment>
+	          </column>
+	    </property>
+	    <property name="lastUpdateTime" type="timestamp">
+	          <column name="LASTUPDATETIME">
+	          <comment>最近更新时间</comment>
+	          </column>
+	    </property> 
+	    <property name="firstInsertTime" type="timestamp">
+	          <column name="FIRSTINSERTTIME">
+	          <comment>首次插入时间</comment>
+	          </column>
+	    </property>  
+	    <property name="rateType" type="string">
+		    <column name="RATETYPE" length="2">
+		        <comment>利率类型</comment>
+		    </column>
+		</property>
+		<property name="bestRate" type="big_decimal">
+		    <column name="BESTRATE" length="2">
+		        <comment>优惠利率</comment>
+		    </column>
+		</property>
+		
+		<bag name = "rateDetailBeans" inverse = "true" outer-join = "true" cascade = "save-update,delete">
+			<key column = "BATCHNO"></key>
+			<one-to-many class = "com.mingtech.application.pool.discount.domain.TxRateDetailBean"></one-to-many>
+		</bag>	 	
+    </class>
+</hibernate-mapping>

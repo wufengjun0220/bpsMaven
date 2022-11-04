@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class table="t_config" name="com.mingtech.application.runmanage.domain.SystemConfig">
+    <cache usage="read-write"/>
+    <id type="string" column="id" length="50" name="id">
+      <generator class="uuid.hex"/>
+    </id>
+    <property name="code" length="50" type="string" column="c_code"/>
+    <property name="item" length="50" type="string" column="c_item"/>
+    <property name="descrip" length="200" type="string" column="c_descrip"/>
+    <property name="type" length="50" type="string" column="c_type"/>
+   
+  </class>
+</hibernate-mapping>

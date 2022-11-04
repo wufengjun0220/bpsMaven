@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.mingtech.application.pool.common.domain.MarginAcctChangeHist" table="PED_MARGIN_ACCT_CHANGE_HIST">
+        <id name="id" type="string">
+            <column name="ID" length="40" />
+            <generator class="uuid.hex" />
+        </id>
+        <property name="bpsNo" type="string">
+            <column name="BPS_NO" length="40" not-null="true" />
+        </property>
+        <property name="oldAcctNo" type="string">
+            <column name="OLD_ACCT_NO" length="20" />
+        </property>
+        <property name="newAcctNo" type="string">
+            <column name="NEW_ACCT_NO" length="20" />
+        </property>
+        <property name="createDate" type="timestamp">
+            <column name="CREATE_DATE" length="11" />
+        </property>
+    </class>
+</hibernate-mapping>

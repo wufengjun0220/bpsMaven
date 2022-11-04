@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class table="t_department" name="com.mingtech.application.sysmanage.domain.Department" dynamic-insert="true" dynamic-update="true">
+    <cache usage="read-write"/>
+    <id type="string" column="id" length="50" name="id">
+      <generator class="uuid"/>
+    </id>
+    <property name="innerBankCode" length="100" type="string" column="d_innerBankCode"/>
+    <property name="name" length="100" type="string" column="d_name"/>
+    <property name="description" length="300" type="string" column="d_desc"/>
+    <property name="order" length="8" type="int" column="d_order"/>
+    <many-to-one column="d_pid" name="parent" class="com.mingtech.application.sysmanage.domain.Department"/>
+    <property name="status" length="8" type="int" column="d_status"/>
+    <property name="level" length="8" type="int" column="d_level"/>
+    <property name="treeCode" length="100" type="string" column="d_treecode"/>
+    <property name="isOrg" type="int" column="d_isOrg"/>
+    <property name="bankNumber" length="20" type="string" column="d_bankNumber"/>
+    <property name="orgCode" length="10" type="string" column="d_orgCOde"/>
+    <property name="auditBankCode" length="20" type="string" column="D_AUDITBANKCODE"/>
+    <property name="isBranch" length="2" type="string" column="is_branch"/>
+    <property name="address" length="300" type="string" column="address"/>
+    <property name="acptDept" length="2" type="string" column="acptDept"/>
+    <property name="areaCode" length="2" type="string" column="areaCode"/>
+    <property name="collectionAccount" length="40" type="string" column="collectionAccount"/>
+    <property name="levelCode" length="80" type="string" column="LEVEL_CODE"/>
+    <property name="mainBraFlg" length="2" type="string" column="mainBra_flg"/>
+    <property name="pjsMemberCode" type="string">
+          <column name="PJS_MEMBER_CODE" length="50">
+          <comment>票交所会员代码</comment>
+          </column>
+    </property>
+    <property name="pjsBrchNo" type="string">
+          <column name="PJS_BRCH_NO" length="50">
+          <comment>票交所机构号</comment>
+          </column>
+    </property>
+    <property name="pjsUserNo" type="string">
+          <column name="PJS_USER_NO" length="50">
+          <comment>票交所交易柜员号</comment>
+          </column>
+    </property>
+    <property name="pjsUserName" type="string">
+          <column name="PJS_USER_NAME" length="300">
+          <comment>票交所交易柜员名称</comment>
+          </column>
+    </property>
+    <property name="departSocialCode" type="string">
+          <column name="DEPART_SOCIAL_CODE" length="30">
+          <comment>社会信用代码</comment>
+          </column>
+    </property>
+    <property name="pjsDepartName" type="string">
+          <column name="PJS_DEPART_NAME" length="500">
+          <comment>票交所对应的机构名称</comment>
+          </column>
+    </property>
+      <property name="pjsRole" type="string">
+          <column name="PJS_ROLE" length="10">
+          <comment>票交所开通权限</comment>
+          </column>
+    </property>
+    <property name="cprBrchNo" type="string">
+          <column name="CPR_BRCH_NO" length="50">
+          <comment>权属登记机构号</comment>
+          </column>
+    </property>
+    <property name="ycFlag" type="string">
+          <column name="YC_FLAG" length="50">
+          <comment>在线银承开关</comment>
+          </column>
+    </property>
+    <property name="ldFlag" type="string">
+          <column name="LD_FLAG" length="50">
+          <comment>在线流贷开关</comment>
+          </column>
+    </property>
+    <property name="TxFlag" type="string">
+	    <column name="TX_FLAG" length="50">
+	        <comment>在线贴现开关</comment>
+	    </column>
+	</property>
+	<property name="txId" type="string">
+	    <column name="TX_ID" length="50">
+	        <comment>在线贴现中台机构id</comment>
+	    </column>
+	</property>
+    <!--
+    <bag table="t_user_dept" lazy="true" inverse="false" cascade="none" name="userList">
+      <key column="deptId"/>
+      <many-to-many column="userId" class="com.mingtech.application.sysmanage.domain.User"/>
+    </bag>
+-->
+	<many-to-one column="d_stockDept" name="stockDept" class="com.mingtech.application.sysmanage.domain.Department"/>
+	<many-to-one column="d_discountDtockDept" name="discountDtockDept" class="com.mingtech.application.sysmanage.domain.Department"/>
+  </class>
+</hibernate-mapping>

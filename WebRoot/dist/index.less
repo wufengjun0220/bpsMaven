@@ -1,0 +1,63 @@
+@primary-color: #0CB0CC;
+@sider-color: #051978;
+
+.ant-layout-sider {
+    background: @sider-color;
+}
+
+.ant-menu-dark,
+.ant-menu-dark .ant-menu-sub {
+    background: @sider-color;
+}
+
+.ant-layout-sider-trigger {
+    background: rgba(0, 0, 0, 0.2) !important;
+}
+
+.ant-table-thead>tr>th {
+    border-right-color: @primary-color  !important;
+    border-bottom: none !important;
+}
+
+.ant-table-bordered .ant-table-fixed-right table {
+    border-left: none !important;
+    border-top-color: @primary-color  !important;
+}
+
+.ant-table-bordered .ant-table-fixed-left table {
+    border-top-color: @primary-color  !important;
+}
+
+.ant-table-bordered .ant-table-fixed-right table>tbody {
+    border-left: 1px solid #e8e8e8 !important;
+}
+
+.ant-table-bordered .ant-table-body>table {
+    border-top-color: @primary-color  !important;
+}
+
+.ant-table-thead>tr>th.ant-table-column-sort {
+    background-color: @primary-color  !important;
+}
+
+//修改表单校验时的样式，防止其它表单元素被挤
+.ant-form-item-control {
+    line-height: 0 !important;
+}
+
+.has-error .ant-form-explain {
+    margin-top: -4px !important;
+}
+
+.primary {
+    color: @primary-color  !important;
+    font-size: 14px;
+}
+
+.primaryCol {
+    color: @primary-color  !important;
+}
+
+.transTitp sup {
+    background-color: @primary-color  !important;
+}
