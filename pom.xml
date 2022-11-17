@@ -17,7 +17,7 @@
         <spring-version>3.2.17.RELEASE</spring-version>
         <sp-version>3.2.0.M1</sp-version>
     </properties>
-    <!--    <url>http://maven.apache.org</url>-->
+    <!--<url>http://maven.apache.org</url>-->
 
     <dependencies>
 
@@ -392,6 +392,7 @@
             <artifactId>jalopy</artifactId>
             <version>1.0b11</version>
         </dependency>
+
 
         <!-- https://mvnrepository.com/artifact/org.codehaus.janino/janino -->
         <dependency>
