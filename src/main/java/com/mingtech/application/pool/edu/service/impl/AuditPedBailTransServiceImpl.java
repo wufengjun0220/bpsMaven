@@ -9,6 +9,7 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.stereotype.Service;
 import sun.util.logging.resources.logging;
 
 import com.mingtech.application.audit.domain.ApproveAuditDto;
@@ -46,6 +47,7 @@ import com.mingtech.framework.core.service.impl.GenericServiceImpl;
  * @author Wu
  *
  */
+@Service("AuditPedBailTransService")
 public class AuditPedBailTransServiceImpl extends GenericServiceImpl implements AuditExtendService {
 	private static final Logger logger = Logger.getLogger(AuditPedBailTransServiceImpl.class);
 

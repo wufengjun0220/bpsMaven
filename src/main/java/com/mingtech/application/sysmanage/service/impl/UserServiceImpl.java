@@ -31,7 +31,9 @@ import com.mingtech.framework.common.util.StringUtil;
 import com.mingtech.framework.common.util.SystemConfig;
 import com.mingtech.framework.core.page.Page;
 import com.mingtech.framework.core.service.impl.GenericServiceImpl;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserServiceImpl extends GenericServiceImpl implements UserService{
 
 	private SystemConfig systemConfig;// 系统配置文件，提供用户初始密码

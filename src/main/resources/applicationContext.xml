@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<!-- 数据库、事务配置文件 -->
+	<import resource="classpath*:pjc/spring-base-info.xml" />
+	<!-- 系统缓存服务配置 -->
+	<import resource="classpath*:pjc/spring-service-cache.xml" />
+	<!-- 基础spring服务配置 -->
+	<import resource="classpath*:pjc/spring-service-info.xml" />
+	<!-- 票据池服务 -->
+	<import resource="classpath*:pjc/spring-service-poolbankinterface.xml" />
+	<!-- 票据池任务轮询服务 -->
+	<!-- <import resource="classpath*:pjc/spring-service-quartz.xml" /> -->
+	
+    <!-- redis缓存单机客户端配置 -->
+	<import resource="classpath*:pjc/spring-redis-cache.xml" />
+	 <!-- redis队列单机客户端配置 -->
+	<import resource="classpath*:pjc/spring-redis-queue.xml" />
+	 <!-- redis缓存集群客户端配置 -->
+	  <!-- 
+	<import resource="classpath*:pjc/spring-redis-cache-cluster.xml" />
+	-->
+	<!-- redis队列集群客户端配置 -->
+	  <!-- 
+	<import resource="classpath*:pjc/spring-redis-queue-cluster.xml" />
+	-->
+	
+	 <!-- redis队列监听服务配置 -->
+	<import resource="classpath*:pjc/spring-redis-queue-listener.xml" />
+	<!-- 审批扩展服务 -->
+    <import resource="classpath*:pjc/spring-audit-extend-service.xml" />
+	
+
+	<!-- 报表处理服务 -->
+	<import resource="classpath*:pjc/spring-service-report.xml" />
+</beans>

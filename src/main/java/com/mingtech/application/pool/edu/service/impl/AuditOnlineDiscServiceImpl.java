@@ -27,12 +27,14 @@ import com.mingtech.application.runmanage.domain.BusiTableConfig;
 import com.mingtech.application.sysmanage.domain.User;
 import com.mingtech.framework.common.util.DateUtils;
 import com.mingtech.framework.core.service.impl.GenericServiceImpl;
+import org.springframework.stereotype.Service;
 
 /**
  * 在线贴现审价流程审批
  * @author Wu
  *
  */
+@Service
 public class AuditOnlineDiscServiceImpl extends GenericServiceImpl implements AuditExtendService {
 	private static final Logger logger = Logger.getLogger(AuditOnlineDiscServiceImpl.class);
 

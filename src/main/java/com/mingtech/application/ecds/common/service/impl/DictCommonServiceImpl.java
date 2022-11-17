@@ -30,9 +30,10 @@ import com.mingtech.application.ecds.common.service.DictCommonService;
 import com.mingtech.framework.common.util.DateUtils;
 import com.mingtech.framework.core.page.Page;
 import com.mingtech.framework.core.service.impl.GenericServiceImpl;
+import org.springframework.stereotype.Service;
 
 
-
+@Service
 public class DictCommonServiceImpl extends GenericServiceImpl implements DictCommonService{
 	private static Logger logger = Logger.getLogger(DictCommonServiceImpl.class);
 	/**

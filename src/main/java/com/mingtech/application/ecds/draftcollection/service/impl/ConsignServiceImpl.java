@@ -42,6 +42,7 @@ import com.mingtech.framework.common.util.DateUtils;
 import com.mingtech.framework.common.util.StringUtil;
 import com.mingtech.framework.core.page.Page;
 import com.mingtech.framework.core.service.impl.GenericServiceImpl;
+import org.springframework.stereotype.Service;
 
 /**
  * <p>
@@ -52,6 +53,7 @@ import com.mingtech.framework.core.service.impl.GenericServiceImpl;
  * @日期：Jun 2, 2009 11:56:51 AM
  * @描述：[ConsignServiceImpl]委托收款接口实现
  */
+@Service
 public class ConsignServiceImpl extends GenericServiceImpl implements
 		ConsignService {
 	private static final Logger logger = Logger.getLogger(ConsignServiceImpl.class);

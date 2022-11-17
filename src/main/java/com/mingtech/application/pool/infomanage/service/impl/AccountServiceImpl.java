@@ -23,11 +23,13 @@ import com.mingtech.framework.common.util.StringUtil;
 import com.mingtech.framework.common.util.SystemConfig;
 import com.mingtech.framework.core.page.Page;
 import com.mingtech.framework.core.service.impl.GenericServiceImpl;
+import org.springframework.stereotype.Service;
 
 /**
  * 类说明：客户账户处理实现
  * @author huangshiqiang@ Jun 9, 2009
  */
+@Service
 public class AccountServiceImpl extends GenericServiceImpl implements
 		AccountService{
 	private static final Logger logger = Logger.getLogger(AccountServiceImpl.class);

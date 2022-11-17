@@ -14,7 +14,9 @@ import com.mingtech.application.ecds.common.service.HolidayService;
 import com.mingtech.framework.common.util.DateUtils;
 import com.mingtech.framework.core.page.Page;
 import com.mingtech.framework.core.service.impl.GenericServiceImpl;
+import org.springframework.stereotype.Service;
 
+@Service
 public class HolidayServiceImpl extends GenericServiceImpl implements
 		HolidayService{
 

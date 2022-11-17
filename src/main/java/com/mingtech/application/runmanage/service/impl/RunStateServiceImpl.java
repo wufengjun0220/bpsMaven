@@ -9,7 +9,9 @@ import com.mingtech.application.runmanage.service.RunStateService;
 import com.mingtech.framework.common.util.DateUtils;
 import com.mingtech.framework.common.util.StringUtil;
 import com.mingtech.framework.core.service.impl.GenericServiceImpl;
+import org.springframework.stereotype.Service;
 
+@Service
 public class RunStateServiceImpl extends GenericServiceImpl	implements RunStateService {
 
 	

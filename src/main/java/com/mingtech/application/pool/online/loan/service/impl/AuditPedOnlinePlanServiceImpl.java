@@ -15,12 +15,14 @@ import com.mingtech.application.pool.online.loan.service.PedOnlineCrdtService;
 import com.mingtech.application.runmanage.domain.BusiTableConfig;
 import com.mingtech.application.sysmanage.domain.User;
 import com.mingtech.framework.core.service.impl.GenericServiceImpl;
+import org.springframework.stereotype.Service;
 
 /**
  * 支付计划修改的审批处理
  * @author Wu
  *
  */
+@Service
 public class AuditPedOnlinePlanServiceImpl extends GenericServiceImpl implements AuditExtendService {
 
 	@Autowired

@@ -1,5 +1,0 @@
-com/mingtech/application/pool/online/acception/service/impl/PedOnlineAcptServiceImpl.class
-com/mingtech/application/pool/draft/service/impl/DraftPoolInServiceImpl.class
-com/mingtech/application/pool/bank/netbanksys/handler/PJC056RequestHandler.class
-com/mingtech/application/pool/bank/creditsys/handler/PJE015CreditHandler.class
-com/mingtech/application/autotask/taskdispatch/OnlineAcpt1AutoTaskDispatch.class

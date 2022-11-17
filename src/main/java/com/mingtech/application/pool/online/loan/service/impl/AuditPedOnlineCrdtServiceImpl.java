@@ -22,12 +22,14 @@ import com.mingtech.application.pool.online.loan.service.PedOnlineCrdtService;
 import com.mingtech.application.runmanage.domain.BusiTableConfig;
 import com.mingtech.application.sysmanage.domain.User;
 import com.mingtech.framework.core.service.impl.GenericServiceImpl;
+import org.springframework.stereotype.Service;
 
 /**
  * 支付计划贷款归还的审批处理
  * @author Wu
  *
  */
+@Service
 public class AuditPedOnlineCrdtServiceImpl extends GenericServiceImpl implements AuditExtendService {
 	private static final Logger logger = Logger.getLogger(AuditPedOnlineCrdtServiceImpl.class);
 	@Autowired

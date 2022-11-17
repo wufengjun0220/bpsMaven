@@ -14,7 +14,9 @@ import com.mingtech.framework.common.util.JsonUtil;
 import com.mingtech.framework.common.util.StringUtil;
 import com.mingtech.framework.core.page.Page;
 import com.mingtech.framework.core.service.impl.GenericServiceImpl;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ProductTypeServiceImpl extends GenericServiceImpl implements ProductTypeService{
 
 	public String getProductTypesJSON(ProductTypeDto productType, Page page) throws Exception {

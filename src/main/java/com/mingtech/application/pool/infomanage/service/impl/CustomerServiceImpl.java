@@ -36,12 +36,14 @@ import com.mingtech.framework.common.util.SystemConfig;
 import com.mingtech.framework.core.dao.impl.GenericHibernateDao;
 import com.mingtech.framework.core.page.Page;
 import com.mingtech.framework.core.service.impl.GenericServiceImpl;
+import org.springframework.stereotype.Service;
 
 /**
  * 类说明：客户信息管理service实现
  *
  * @author huangshiqiang@ Jun 9, 2009
  */
+@Service
 public class CustomerServiceImpl extends GenericServiceImpl implements CustomerService {
 	private static final Logger logger = Logger.getLogger(CustomerServiceImpl.class);
 	//private CoreClient coreClient = null;

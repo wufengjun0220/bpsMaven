@@ -39,12 +39,14 @@ import com.mingtech.application.sysmanage.service.DepartmentService;
 import com.mingtech.application.utils.AutoTaskNoDefine;
 import com.mingtech.framework.common.util.StringUtil;
 import com.mingtech.framework.core.service.impl.GenericServiceImpl;
+import org.springframework.stereotype.Service;
 
 /**
  * 手工出池审批
  * @author Wu
  *
  */
+@Service
 public class AuditPoolOutServiceImpl extends GenericServiceImpl implements AuditExtendService {
 
 	@Autowired

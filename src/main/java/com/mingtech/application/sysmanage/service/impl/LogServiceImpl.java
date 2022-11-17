@@ -24,7 +24,9 @@ import com.mingtech.framework.common.util.JsonUtil;
 import com.mingtech.framework.common.util.UUID;
 import com.mingtech.framework.core.page.Page;
 import com.mingtech.framework.core.service.impl.GenericServiceImpl;
+import org.springframework.stereotype.Service;
 
+@Service
 public class LogServiceImpl extends GenericServiceImpl implements LogService {
 	private static final Logger logger = Logger.getLogger(LogServiceImpl.class);
 

@@ -19,7 +19,9 @@ import com.mingtech.framework.common.util.StringUtil;
 import com.mingtech.framework.core.dao.DAOException;
 import com.mingtech.framework.core.page.Page;
 import com.mingtech.framework.core.service.impl.GenericServiceImpl;
+import org.springframework.stereotype.Service;
 
+@Service
 public class DictionaryServiceImpl extends GenericServiceImpl implements
 		IDictionaryService {
 
